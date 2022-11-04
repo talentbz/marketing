@@ -42,6 +42,56 @@
                         <li><a href="#" >Group List</a></li>
                     </ul>
                 </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="bx bx-store"></i>
+                        <span>Klaviyo</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="true">
+                        <li><a href="#" >Campaign</a></li>
+                        <li><a href="#" >Group List</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="dripicons-briefcase"></i>
+                        <span>Klaviyo</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="true">
+                        <li><a href="#" >Campaign</a></li>
+                        <li><a href="#" >Group List</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="dripicons-graduation"></i>
+                        <span>HYROS</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="true">
+                        <li><a href="#" >Campaign</a></li>
+                        <li><a href="#" >Group List</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="bx bx-aperture"></i>
+                        <span>Setting</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="true">
+                        <li><a href="#" >asd</a></li>
+                        <li><a href="#" >Group List</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="bx bx-user"></i>
+                        <span>User Management</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="true">
+                        <li><a href="#" >User List</a></li>
+                        <li><a href="#" >Create User</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
         <!-- Sidebar -->

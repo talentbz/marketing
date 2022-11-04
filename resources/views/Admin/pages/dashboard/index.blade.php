@@ -25,9 +25,9 @@
                                 </div>
                                 <div class="media-body align-self-center">
                                     <div class="text-muted">
-                                        <p class="mb-2">Welcome to Skote Dashboard</p>
-                                        <h5 class="mb-1">Henry wells</h5>
-                                        <p class="mb-0">UI / UX Designer</p>
+                                        <p class="mb-2">Welcome to Dashboard</p>
+                                        <h5 class="mb-1">ZRich Media</h5>
+                                        <p class="mb-0">Marketing / CEO</p>
                                     </div>
                                 </div>
                             </div>
@@ -90,11 +90,11 @@
                         <div class="col-7">
                             <div class="text-primary p-3">
                                 <h5 class="text-primary">Welcome Back !</h5>
-                                <p>Skote Saas Dashboard</p>
+                                <p>ZRich Dashboard</p>
 
                                 <ul class="ps-3 mb-0">
-                                    <li class="py-1">7 + Layouts</li>
-                                    <li class="py-1">Multiple apps</li>
+                                    <li class="py-1">Google AD</li>
+                                    <li class="py-1">FaceBook AD</li>
                                 </ul>
                             </div>
                         </div>
@@ -346,475 +346,61 @@
             </div>
         </div>
 
-        <div class="col-xl-4">
+        <div class="col-xl-8">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title mb-4">Tasks</h4>
+                    <div class="d-flex flex-wrap align-items-start">
+                        <h5 class="card-title me-2">Visitors</h5>
+                        <div class="ms-auto">
+                            <div class="toolbar button-items text-end">
+                                <button type="button" class="btn btn-light btn-sm">
+                                    ALL
+                                </button>
+                                <button type="button" class="btn btn-light btn-sm">
+                                    1M
+                                </button>
+                                <button type="button" class="btn btn-light btn-sm">
+                                    6M
+                                </button>
+                                <button type="button" class="btn btn-light btn-sm active">
+                                    1Y
+                                </button>
 
-                    <ul class="nav nav-pills bg-light rounded">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#">In Process</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Upcoming</a>
-                        </li>
-                    </ul>
-
-                    <div class="mt-4">
-                        <div data-simplebar style="max-height: 250px;">
-
-                            <div class="table-responsive">
-                                <table class="table table-nowrap align-middle table-hover mb-0">
-                                    <tbody>
-                                        <tr>
-                                            <td style="width: 50px;">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="tasklistCheck01">
-                                                    <label class="form-check-label" for="tasklistCheck01"></label>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <h5 class="text-truncate font-size-14 mb-1"><a href="#"
-                                                        class="text-dark">Skote Saas Dashboard</a></h5>
-                                                <p class="text-muted mb-0">Assigned to Mark</p>
-                                            </td>
-                                            <td style="width: 90px;">
-                                                <div>
-                                                    <ul class="list-inline mb-0 font-size-16">
-                                                        <li class="list-inline-item">
-                                                            <a href="#" class="text-success p-1"><i
-                                                                    class="bx bxs-edit-alt"></i></a>
-                                                        </li>
-                                                        <li class="list-inline-item">
-                                                            <a href="#" class="text-danger p-1"><i
-                                                                    class="bx bxs-trash"></i></a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="tasklistCheck02">
-                                                    <label class="form-check-label" for="tasklistCheck02"></label>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <h5 class="text-truncate font-size-14 mb-1"><a href="#"
-                                                        class="text-dark">New Landing UI</a></h5>
-                                                <p class="text-muted mb-0">Assigned to Team A</p>
-                                            </td>
-                                            <td>
-                                                <div>
-                                                    <ul class="list-inline mb-0 font-size-16">
-                                                        <li class="list-inline-item">
-                                                            <a href="#" class="text-success p-1"><i
-                                                                    class="bx bxs-edit-alt"></i></a>
-                                                        </li>
-                                                        <li class="list-inline-item">
-                                                            <a href="#" class="text-danger p-1"><i
-                                                                    class="bx bxs-trash"></i></a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="tasklistCheck02">
-                                                    <label class="form-check-label" for="tasklistCheck02"></label>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <h5 class="text-truncate font-size-14 mb-1"><a href="#"
-                                                        class="text-dark">Brand logo design</a></h5>
-                                                <p class="text-muted mb-0">Assigned to Janis</p>
-                                            </td>
-                                            <td>
-                                                <div>
-                                                    <ul class="list-inline mb-0 font-size-16">
-                                                        <li class="list-inline-item">
-                                                            <a href="#" class="text-success p-1"><i
-                                                                    class="bx bxs-edit-alt"></i></a>
-                                                        </li>
-                                                        <li class="list-inline-item">
-                                                            <a href="#" class="text-danger p-1"><i
-                                                                    class="bx bxs-trash"></i></a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="tasklistCheck04">
-                                                    <label class="form-check-label" for="tasklistCheck04"></label>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <h5 class="text-truncate font-size-14 mb-1"><a href="#"
-                                                        class="text-dark">Blog Template UI</a></h5>
-                                                <p class="text-muted mb-0">Assigned to Dianna</p>
-                                            </td>
-                                            <td>
-                                                <div>
-                                                    <ul class="list-inline mb-0 font-size-16">
-                                                        <li class="list-inline-item">
-                                                            <a href="#" class="text-success p-1"><i
-                                                                    class="bx bxs-edit-alt"></i></a>
-                                                        </li>
-                                                        <li class="list-inline-item">
-                                                            <a href="#" class="text-danger p-1"><i
-                                                                    class="bx bxs-trash"></i></a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="tasklistCheck05">
-                                                    <label class="form-check-label" for="tasklistCheck05"></label>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <h5 class="text-truncate font-size-14 mb-1"><a href="#"
-                                                        class="text-dark">Multipurpose Landing</a></h5>
-                                                <p class="text-muted mb-0">Assigned to Team B</p>
-                                            </td>
-                                            <td>
-                                                <div>
-                                                    <ul class="list-inline mb-0 font-size-16">
-                                                        <li class="list-inline-item">
-                                                            <a href="#" class="text-success p-1"><i
-                                                                    class="bx bxs-edit-alt"></i></a>
-                                                        </li>
-                                                        <li class="list-inline-item">
-                                                            <a href="#" class="text-danger p-1"><i
-                                                                    class="bx bxs-trash"></i></a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="tasklistCheck06">
-                                                    <label class="form-check-label" for="tasklistCheck06"></label>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <h5 class="text-truncate font-size-14 mb-1"><a href="#"
-                                                        class="text-dark">Redesign - Landing page</a></h5>
-                                                <p class="text-muted mb-0">Assigned to Jerry</p>
-                                            </td>
-                                            <td>
-                                                <div>
-                                                    <ul class="list-inline mb-0 font-size-16">
-                                                        <li class="list-inline-item">
-                                                            <a href="#" class="text-success p-1"><i
-                                                                    class="bx bxs-edit-alt"></i></a>
-                                                        </li>
-                                                        <li class="list-inline-item">
-                                                            <a href="#" class="text-danger p-1"><i
-                                                                    class="bx bxs-trash"></i></a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="tasklistCheck07">
-                                                    <label class="form-check-label" for="tasklistCheck07"></label>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <h5 class="text-truncate font-size-14 mb-1"><a href="#"
-                                                        class="text-dark">Skote Crypto Dashboard</a></h5>
-                                                <p class="text-muted mb-0">Assigned to Eric</p>
-                                            </td>
-                                            <td>
-                                                <div>
-                                                    <ul class="list-inline mb-0 font-size-16">
-                                                        <li class="list-inline-item">
-                                                            <a href="#" class="text-success p-1"><i
-                                                                    class="bx bxs-edit-alt"></i></a>
-                                                        </li>
-                                                        <li class="list-inline-item">
-                                                            <a href="#" class="text-danger p-1"><i
-                                                                    class="bx bxs-trash"></i></a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="card-footer bg-transparent border-top">
-                    <div class="text-center">
-                        <a href="javascript: void(0);" class="btn btn-primary waves-effect waves-light"> Add new Task</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-xl-4">
-            <div class="card">
-                <div class="card-body border-bottom">
-                    <div class="row">
-                        <div class="col-md-4 col-9">
-                            <h5 class="font-size-15 mb-1">Steven Franklin</h5>
-                            <p class="text-muted mb-0"><i class="mdi mdi-circle text-success align-middle me-1"></i> Active
-                                now</p>
-                        </div>
-                        <div class="col-md-8 col-3">
-                            <ul class="list-inline user-chat-nav text-end mb-0">
-                                <li class="list-inline-item d-none d-sm-inline-block">
-                                    <div class="dropdown">
-                                        <button class="btn nav-btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                                            aria-haspopup="true" aria-expanded="false">
-                                            <i class="bx bx-search-alt-2"></i>
-                                        </button>
-                                        <div class="dropdown-menu dropdown-menu-end py-0 dropdown-menu-md">
-                                            <form class="p-3">
-                                                <div class="form-group m-0">
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control" placeholder="Search ..."
-                                                            aria-label="Recipient's username">
-
-                                                        <button class="btn btn-primary" type="submit"><i
-                                                                class="mdi mdi-magnify"></i></button>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="list-inline-item  d-none d-sm-inline-block">
-                                    <div class="dropdown">
-                                        <button class="btn nav-btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                                            aria-haspopup="true" aria-expanded="false">
-                                            <i class="bx bx-cog"></i>
-                                        </button>
-                                        <div class="dropdown-menu dropdown-menu-end">
-                                            <a class="dropdown-item" href="#">View Profile</a>
-                                            <a class="dropdown-item" href="#">Clear chat</a>
-                                            <a class="dropdown-item" href="#">Muted</a>
-                                            <a class="dropdown-item" href="#">Delete</a>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li class="list-inline-item">
-                                    <div class="dropdown">
-                                        <button class="btn nav-btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                                            aria-haspopup="true" aria-expanded="false">
-                                            <i class="bx bx-dots-horizontal-rounded"></i>
-                                        </button>
-                                        <div class="dropdown-menu dropdown-menu-end">
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <a class="dropdown-item" href="#">Something else</a>
-                                        </div>
-                                    </div>
-                                </li>
-
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body pb-0">
-                    <div>
-                        <div class="chat-conversation">
-                            <ul class="list-unstyled" data-simplebar style="max-height: 260px;">
-                                <li>
-                                    <div class="chat-day-title">
-                                        <span class="title">Today</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="conversation-list">
-                                        <div class="dropdown">
-
-                                            <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                                aria-haspopup="true" aria-expanded="false">
-                                                <i class="bx bx-dots-vertical-rounded"></i>
-                                            </a>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="#">Copy</a>
-                                                <a class="dropdown-item" href="#">Save</a>
-                                                <a class="dropdown-item" href="#">Forward</a>
-                                                <a class="dropdown-item" href="#">Delete</a>
-                                            </div>
-                                        </div>
-                                        <div class="ctext-wrap">
-                                            <div class="conversation-name">Steven Franklin</div>
-                                            <p>
-                                                Hello!
-                                            </p>
-                                            <p class="chat-time mb-0"><i class="bx bx-time-five align-middle me-1"></i>
-                                                10:00</p>
-                                        </div>
-
-                                    </div>
-                                </li>
-
-                                <li class="right">
-                                    <div class="conversation-list">
-                                        <div class="dropdown">
-
-                                            <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                                aria-haspopup="true" aria-expanded="false">
-                                                <i class="bx bx-dots-vertical-rounded"></i>
-                                            </a>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="#">Copy</a>
-                                                <a class="dropdown-item" href="#">Save</a>
-                                                <a class="dropdown-item" href="#">Forward</a>
-                                                <a class="dropdown-item" href="#">Delete</a>
-                                            </div>
-                                        </div>
-                                        <div class="ctext-wrap">
-                                            <div class="conversation-name">Henry Wells</div>
-                                            <p>
-                                                Hi, How are you? What about our next meeting?
-                                            </p>
-
-                                            <p class="chat-time mb-0"><i class="bx bx-time-five align-middle me-1"></i>
-                                                10:02</p>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="conversation-list">
-                                        <div class="dropdown">
-
-                                            <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                                aria-haspopup="true" aria-expanded="false">
-                                                <i class="bx bx-dots-vertical-rounded"></i>
-                                            </a>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="#">Copy</a>
-                                                <a class="dropdown-item" href="#">Save</a>
-                                                <a class="dropdown-item" href="#">Forward</a>
-                                                <a class="dropdown-item" href="#">Delete</a>
-                                            </div>
-                                        </div>
-                                        <div class="ctext-wrap">
-                                            <div class="conversation-name">Steven Franklin</div>
-                                            <p>
-                                                Yeah everything is fine
-                                            </p>
-
-                                            <p class="chat-time mb-0"><i class="bx bx-time-five align-middle me-1"></i>
-                                                10:06</p>
-                                        </div>
-
-                                    </div>
-                                </li>
-
-                                <li class="last-chat">
-                                    <div class="conversation-list">
-                                        <div class="dropdown">
-
-                                            <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                                aria-haspopup="true" aria-expanded="false">
-                                                <i class="bx bx-dots-vertical-rounded"></i>
-                                            </a>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="#">Copy</a>
-                                                <a class="dropdown-item" href="#">Save</a>
-                                                <a class="dropdown-item" href="#">Forward</a>
-                                                <a class="dropdown-item" href="#">Delete</a>
-                                            </div>
-                                        </div>
-                                        <div class="ctext-wrap">
-                                            <div class="conversation-name">Steven Franklin</div>
-                                            <p>& Next meeting tomorrow 10.00AM</p>
-                                            <p class="chat-time mb-0"><i class="bx bx-time-five align-middle me-1"></i>
-                                                10:06</p>
-                                        </div>
-
-                                    </div>
-                                </li>
-
-                                <li class="right">
-                                    <div class="conversation-list">
-                                        <div class="dropdown">
-
-                                            <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                                aria-haspopup="true" aria-expanded="false">
-                                                <i class="bx bx-dots-vertical-rounded"></i>
-                                            </a>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="#">Copy</a>
-                                                <a class="dropdown-item" href="#">Save</a>
-                                                <a class="dropdown-item" href="#">Forward</a>
-                                                <a class="dropdown-item" href="#">Delete</a>
-                                            </div>
-                                        </div>
-                                        <div class="ctext-wrap">
-                                            <div class="conversation-name">Henry Wells</div>
-                                            <p>
-                                                Wow that's great
-                                            </p>
-
-                                            <p class="chat-time mb-0"><i class="bx bx-time-five align-middle me-1"></i>
-                                                10:07</p>
-                                        </div>
-                                    </div>
-                                </li>
-
-
-                            </ul>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="p-3 chat-input-section">
-                    <div class="row">
-                        <div class="col">
-                            <div class="position-relative">
-                                <input type="text" class="form-control rounded chat-input" placeholder="Enter Message...">
-                                <div class="chat-input-links">
-                                    <ul class="list-inline mb-0">
-                                        <li class="list-inline-item"><a href="#"><i
-                                                    class="mdi mdi-emoticon-happy-outline"></i></a></li>
-                                        <li class="list-inline-item"><a href="#"><i
-                                                    class="mdi mdi-file-image-outline"></i></a></li>
-                                        <li class="list-inline-item"><a href="#"><i
-                                                    class="mdi mdi-file-document-outline"></i></a></li>
-                                    </ul>
-                                </div>
+                    <div class="row text-center">
+                        <div class="col-lg-4">
+                            <div class="mt-4">
+                                <p class="text-muted mb-1">Today</p>
+                                <h5>1024</h5>
                             </div>
                         </div>
-                        <div class="col-auto">
-                            <button type="submit" class="btn btn-primary chat-send w-md waves-effect waves-light"><span
-                                    class="d-none d-sm-inline-block me-2">Send</span> <i class="mdi mdi-send"></i></button>
+
+                        <div class="col-lg-4">
+                            <div class="mt-4">
+                                <p class="text-muted mb-1">This Month</p>
+                                <h5>12356 <span class="text-success font-size-13">0.2 % <i
+                                            class="mdi mdi-arrow-up ms-1"></i></span></h5>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="mt-4">
+                                <p class="text-muted mb-1">This Year</p>
+                                <h5>102354 <span class="text-success font-size-13">0.1 % <i
+                                            class="mdi mdi-arrow-up ms-1"></i></span></h5>
+                            </div>
                         </div>
                     </div>
+
+                    <hr class="mb-4">
+
+                    <div class="apex-charts" id="area-chart" dir="ltr"></div>
                 </div>
             </div>
         </div>
-
     </div>
     <!-- end row -->
 
