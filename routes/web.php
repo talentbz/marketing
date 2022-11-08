@@ -19,6 +19,9 @@ Route::get('/', [App\Http\Controllers\FrontController::class, 'index'])->name('f
 
 Route::prefix('/admin')->middleware(['auth:web', 'Admin'])->group(function () {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'root'])->name('root');
+    Route::prefix('/google_ads')->group(function () {
+        Route::get('/', [App\Http\Controllers\Admin\GoogleAd\GoogleAdController::class, 'index'])->name('googleAd.index');
+    });
 });
 
 //Update User Details
