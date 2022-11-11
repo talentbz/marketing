@@ -1,33 +1,26 @@
 {
-    "name": "laravel/laravel",
-    "type": "project",
-    "description": "The Laravel Framework.",
-    "keywords": [
-        "framework",
-        "laravel"
+    "description": "A sample application that demonstrates how to use Google Ads API with Laravel.",
+    "license": [
+        "MIT",
+        "Apache-2.0"
     ],
-    "license": "MIT",
+    "type": "project",
     "require": {
-        "php": "^7.3|^8.0",
-        "ext-bcmath": "*",
-        "ext-grpc": "^1.28",
-        "fideloper/proxy": "^4.4",
-        "fruitcake/laravel-cors": "^2.0",
-        "googleads/google-ads-php": "^17.1",
-        "googleads/googleads-php-lib": "^49.0.0",
-        "guzzlehttp/guzzle": "^7.0.1",
-        "laravel/framework": "^8.12",
-        "laravel/tinker": "^2.5",
-        "laravel/ui": "^3.2",
-        "tmarois/laravel-ads-sdk": "^1.5"
+        "facade/ignition": "^2.3.6",
+        "fideloper/proxy": "^4.0",
+        "googleads/google-ads-php": ">=13.0",
+        "laravel/framework": "^8.0",
+        "laravel/tinker": "^2.0",
+        "symfony/http-foundation": "^5.0",
+        "zadorin/airtable-php": "^0.6.0"
     },
     "require-dev": {
-        "facade/ignition": "^2.5",
-        "fakerphp/faker": "^1.9.1",
-        "laravel/sail": "^1.0.1",
-        "mockery/mockery": "^1.4.2",
+        "beyondcode/laravel-dump-server": "^1.0",
+        "filp/whoops": "^2.0",
+        "fzaninotto/faker": "^1.4",
+        "mockery/mockery": "^1.0",
         "nunomaduro/collision": "^5.0",
-        "phpunit/phpunit": "^9.3.3"
+        "phpunit/phpunit": "^9.0"
     },
     "config": {
         "optimize-autoloader": true,
