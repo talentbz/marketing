@@ -264,18 +264,28 @@ class GoogleAdsApiController extends Controller
         );
     }
     public function getCost( Request $request, GoogleAdsClient $googleAdsClient){
-        $apiKey = 'keyXretrrg7CwNqPw';
-        $database = 'appxRNava0JFzlq9P';
+        $apiKey = env("AIRTABLE_KEY");
+        $database = env("AIRTABLE_BASE");
         $tableName = 'GAds-testing';
-
         $client = new \Zadorin\Airtable\Client($apiKey, $database);
         
-        $records = $client->table($tableName)
+        $query = $client->table($tableName)
             ->select('*')
-            ->execute()
-            ->fetchAll();
+            ->paginate(100);
+        
+        $total_old_arr = array();
+
+        while ($recordset = $query->nextPage()) {
+            $temp_arr = $recordset->fetchAll();
+            array_push($total_old_arr, ...$temp_arr);
+        }
+
         try{
-            $client->delete(...$records)->execute();
+            foreach ($total_old_arr as $toa){
+                $client->delete($toa)->execute();
+                usleep(250000);
+
+            }
         }
         catch (Exception $err){
             $x = "Nothing";
@@ -283,7 +293,7 @@ class GoogleAdsApiController extends Controller
 
         $camp_status_arr = ['unknown_0', 'unkown_1', 'Eligible', 'Paused', 'Removed', 'unkown_5', 'unkown_6', 'unkown_7', 'unkown_8', 'unkown_9'];
         $customerIdList = 'SELECT customer_client.id FROM customer_client WHERE customer_client.manager != TRUE AND customer_client.test_account != TRUE AND customer_client.hidden != TRUE';
-        $manageId = '9681275513';
+        $manageId = env("MANAGE_ID");
         $customerIdResponse = $googleAdsClient->getGoogleAdsServiceClient()->search(
             $manageId,
             $customerIdList,
@@ -319,13 +329,155 @@ class GoogleAdsApiController extends Controller
                 array_push($data_array, $temp_array);
             }
         }
-        dd($data_array);
-        // foreach ($data_array as $da){
-        //     $client->table($tableName)
-        //     ->insert($da)
-        //     ->execute();
-        //     usleep(250000);
-        // }
+        // dd($data_array);
+        foreach ($data_array as $da){
+            $client->table($tableName)
+            ->insert($da)
+            ->execute();
+            usleep(250000);
+        }
         
     }
+
+    public function getMTD( Request $request, GoogleAdsClient $googleAdsClient){
+        $manageId = env("MANAGE_ID");
+        $customerIdList = 'SELECT customer_client.id, customer_client.descriptive_name, customer_client.currency_code FROM customer_client WHERE customer_client.manager != TRUE AND customer_client.test_account != TRUE AND customer_client.hidden != TRUE';
+        $customerIdResponse = $googleAdsClient->getGoogleAdsServiceClient()->search(
+            $manageId,
+            $customerIdList,
+        );
+
+        $total_account_arr = array();
+
+        $current_month = date('m');
+
+        foreach ($customerIdResponse->iterateAllElements() as $row){
+            
+            $individual_acc_arr = array();
+
+            $customerId = $row->getCustomerClient()->getId();
+            $customer_name = $row->getCustomerClient()->getDescriptiveName();
+            $currency_code = $row->getCustomerClient()->getCurrencyCode();
+
+            $individual_acc_arr['GAds_Account_ID'] = $customerId;
+            $individual_acc_arr['Currency'] = $currency_code;
+            $individual_acc_arr['Store_Name'] = $customer_name;
+
+            $this_month = 'SELECT metrics.cost_micros FROM customer WHERE segments.date DURING THIS_MONTH';
+            
+            try {
+                $response = $googleAdsClient->getGoogleAdsServiceClient()->search(
+                    $customerId,
+                    $this_month,
+                );
+            }
+            catch (Exception $ex) {
+              continue;
+            }
+
+            $month_name_arr = ["nothing", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+            foreach ($response->iterateAllElements() as $month){
+                $individual_acc_arr['MTD_Cost'] = round($month->getMetrics()->getCostMicros() / 1000000, 2);
+            }
+            for ($j = 1; $j <= 12; $j++){
+                $individual_acc_arr[$month_name_arr[$j]] = 0;
+            }
+            
+            for ($i = 1; $i <= $current_month; $i++){
+                if ($i < 10){
+                    $month_str = (string)("0".$i);
+                }else{
+                    $month_str = (string)$i;
+                }
+                
+                $query_template = "SELECT metrics.cost_micros FROM customer WHERE segments.month = '2022-".$month_str."-01'";
+
+                try {
+                    $response = $googleAdsClient->getGoogleAdsServiceClient()->search(
+                        $customerId,
+                        $query_template,
+                    );
+                }
+                catch (Exception $ex) {
+                  continue;
+                }
+
+                foreach ($response->iterateAllElements() as $temp_cost){
+                    $individual_acc_arr[$month_name_arr[$i]] = round($temp_cost->getMetrics()->getCostMicros() / 1000000, 2);
+                }
+            }
+
+            $ytd = 0;
+
+            for ($j = 1; $j <= 12; $j++){
+                $ytd += $individual_acc_arr[$month_name_arr[$j]];
+            }
+
+            $individual_acc_arr["YTD_Cost"] = $ytd;
+
+            array_push($total_account_arr, $individual_acc_arr);
+        }
+        
+        // Airtable API initialization
+        $apiKey = env("AIRTABLE_KEY");
+        $database = env("AIRTABLE_BASE");
+        $tableName = 'GAds_Account_MTD';
+        $client = new \Zadorin\Airtable\Client($apiKey, $database);
+        
+        // Remove Old Data
+        $query = $client->table($tableName)
+            ->select('*')
+            ->paginate(100);
+        
+        $total_old_arr = array();
+
+        while ($recordset = $query->nextPage()) {
+            $temp_arr = $recordset->fetchAll();
+            array_push($total_old_arr, ...$temp_arr);
+        }
+
+        try{
+            foreach ($total_old_arr as $toa){
+                $client->delete($toa)->execute();
+                usleep(250000);
+
+            }
+        }
+        catch (Exception $err){
+            $x = "Nothing";
+        }
+        
+        // Insert new data to Airtable
+        foreach ($total_account_arr as $taa){
+            $client->table($tableName)
+            ->insert($taa)
+            ->execute();
+            usleep(250000);
+        }
+    }
 }
+
+
+/*
+
+    $total_account_arr = [
+        [
+            "Store Name" => "Boom Speaker",
+            "GAds Account ID" => 231435152345,//
+            "Currency" => "usd",
+            "MTD Cost" => 345.45,//
+            "YTD Cost" => 2314.54,
+            "January" => 234.54,
+            .....
+            "December" => 0
+
+        ],
+        
+        "fasasda" => [
+            .....
+        ],
+
+    ]
+
+*/

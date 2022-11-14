@@ -37,3 +37,8 @@ Route::get(
     'GoogleAdsApiController@getCost'
 );
 
+Route::get(
+    'get_mtd',
+    'GoogleAdsApiController@getMTD'
+);
+
