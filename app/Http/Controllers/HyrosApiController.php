@@ -9,7 +9,7 @@ class HyrosApiController extends Controller
 {
     public function getMTD( Request $request){
         // return view('welcome');
-        $response = Http::get('https://private-ea0372-hyros.apiary-mock.com/v1/api/v1.0/attribution', [
+        $request = Http::get('https://private-ea0372-hyros.apiary-mock.com/v1/api/v1.0/attribution', [
             "attributionModel" => 'last_click',
             "startDate" => '2020-05-12T10:00:00',
             "endDate" => '2021-04-13T10:00:00',
@@ -21,7 +21,7 @@ class HyrosApiController extends Controller
         ]);
         $request->headers->set('Content-Type', 'application/json');
         $request->headers->set('API-Key', 'b12a19f4521d44abc8d613efca7f9c23c88');
-        dd($response);
+        dd($request);
         return json_decode($response);
     }
 }
