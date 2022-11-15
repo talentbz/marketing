@@ -11,7 +11,7 @@
     <script>
         var request = new XMLHttpRequest();
 
-        request.open('GET', 'https://private-ea0372-hyros.apiary-mock.com/v1/api/v1.0/attribution?attributionModel=last_click&startDate=2020-05-12T10:00:00&endDate=2021-04-13T10:00:00&ids=ids=205044496234,205044496235&dayOfAttribution=false&scientificDaysRange=30');
+        request.open('GET', 'https://private-ea0372-hyros.apiary-mock.com/v1/api/v1.0/attribution?attributionModel=last_click&startDate=2020-05-12T10:00:00&endDate=2021-04-13T10:00:00&level={level}&fields={fields}&ids=ids=205044496234,205044496235&currency={currency}&dayOfAttribution=false&scientificDaysRange=30');
 
         request.setRequestHeader('Content-Type', 'application/json');
         request.setRequestHeader('API-Key', 'b12a19f4521d44abc8d613efca7f9c23c88');
