@@ -42,3 +42,9 @@ Route::get(
     'GoogleAdsApiController@getMTD'
 );
 
+Route::get(
+    'get_hyros',
+    'HyrosApiController@getMTD'
+);
+
+
