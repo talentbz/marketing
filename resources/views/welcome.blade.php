@@ -11,7 +11,7 @@
     <script>
        var request = new XMLHttpRequest();
 
-        request.open('GET', 'https://private-ea0372-hyros.apiary-proxy.com/v1/api/v1.0/attribution?attributionModel={attributionModel}&startDate={startDate}&endDate={endDate}&level={level}&fields={fields}&ids={ids}&currency={currency}&dayOfAttribution={dayOfAttribution}&scientificDaysRange={scientificDaysRange}');
+        request.open('GET', 'https://private-ea0372-hyros.apiary-mock.com/v1/api/v1.0/attribution?attributionModel={attributionModel}&startDate={startDate}&endDate={endDate}&level={level}&fields={fields}&ids={ids}&currency={currency}&dayOfAttribution={dayOfAttribution}&scientificDaysRange={scientificDaysRange}');
 
         request.setRequestHeader('Content-Type', 'application/json');
         request.setRequestHeader('API-Key', 'b12a19f4521d44abc8d613efca7f9c23c88');
