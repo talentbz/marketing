@@ -14,15 +14,15 @@ class HyrosApiController extends Controller
             'API-Key' => 'b12a19f4521d44abc8d613efca7f9c23c88', 
         ])->get('https://private-ea0372-hyros.apiary-mock.com/v1/api/v1.0/attribution', [
             "attributionModel" => 'last_click',
-            "startDate" => '2020-05-12T10:00:00',
-            "endDate" => '2021-04-13T10:00:00',
+            "startDate" => '2020-05-12',
+            "endDate" => '2021-04-13',
             "level" => 'level',
             "fields" => 'fields',
             "ids" => '205044496234,205044496235',
             "dayOfAttribution" => false,
             "scientificDaysRange" => 30
         ]);
-        $data = $response->getBody()->getContents()->result;
+        $data = $response->getBody()->getContents();
         dd($data);
         return json_decode($response);
     }
