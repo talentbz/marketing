@@ -36,7 +36,7 @@ class HyrosApiController extends Controller
         //     }
         // }
         // dd(1);
-        // return view('welcome');
+        return view('welcome');
         $response = Http::withHeaders([
             'Content-Type' => 'application/json',
             'API-Key' => 'b12a19f4521d44abc8d613efca7f9c23c88', 
@@ -45,7 +45,7 @@ class HyrosApiController extends Controller
             "startDate" => '2022-11-01',
             "endDate" => '2022-11-15',
             "level" => 'google_campaign',
-            "fields" => 'revenue, total_revenue, refund, unique_sales',
+            "fields" => 'revenue,total_revenue,refund,unique_sales',
             "ids" => 'ids=1057231095,10113550076,10127550431',
             "dayOfAttribution" => false,
             "scientificDaysRange" => 30
