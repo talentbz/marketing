@@ -44,8 +44,8 @@ class HyrosApiController extends Controller
             "attributionModel" => 'last_click',
             "startDate" => '2021-11-01',
             "endDate" => '2021-11-15',
-            "level" => 'level',
-            "fields" => 'fields',
+            "level" => 'google_campaign',
+            "fields" => 'revenue, total_revenue, refund, unique_sales',
             "ids" => '1057231095,10113550076,10127550431',
             "dayOfAttribution" => false,
             "scientificDaysRange" => 30
