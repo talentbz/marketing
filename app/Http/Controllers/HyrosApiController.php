@@ -55,13 +55,13 @@ class HyrosApiController extends Controller
         // return json_decode($response);
         $ch = curl_init();
 
-        curl_setopt($ch, CURLOPT_URL, "https://private-ea0372-hyros.apiary-mock.com/v1/api/v1.0/attribution?attributionModel=last_click&startDate=2022-11-01T10:00:00&endDate=2022-11-15T10:00:00&level=google_campaign&fields=revenue,total_revenue,refund,unique_sales&ids=ids=1057231095,10113550076,10127550431&currency={currency}&dayOfAttribution=false&scientificDaysRange=30");
+        curl_setopt($ch, CURLOPT_URL, "https://private-a1f250-revenue.apiary-mock.com/v1/api/v1.0/attribution?attributionModel=last_click&startDate=2022-11-01T10:00:00&endDate=2022-11-15T10:00:00&level=google_campaign&fields=revenue,total_revenue,refund,unique_sales&ids=ids=1057231095,10113550076,10127550431&currency={currency}&dayOfAttribution=false&scientificDaysRange=30");
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
         curl_setopt($ch, CURLOPT_HEADER, FALSE);
 
         curl_setopt($ch, CURLOPT_HTTPHEADER, array(
         "Content-Type: application/json",
-        "API-Key: b12a19f4521d44abc8d613efca7f9c23c88"
+        "API-Key: e60d2c62b8dc5ae28dce738dc5d925cb"
         ));
 
         $response = curl_exec($ch);
