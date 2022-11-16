@@ -38,17 +38,17 @@ class HyrosApiController extends Controller
         // dd(1);
         // return view('welcome');
         $response = Http::withHeaders([
-            // 'Content-Type' => 'application/json',
-            // 'API-Key' => 'b12a19f4521d44abc8d613efca7f9c23c88', 
-        ])->get('https://private-ea0372-hyros.apiary-mock.com/v1/api/v1.0/attribution', [
-            // "attributionModel" => 'last_click',
-            // "startDate" => '2022-11-01',
-            // "endDate" => '2022-11-15',
-            // "level" => 'google_campaign',
-            // "fields" => 'revenue,total_revenue,refund,unique_sales',
-            // "ids" => 'ids=1057231095,10113550076,10127550431',
-            // "dayOfAttribution" => false,
-            // "scientificDaysRange" => 30
+            'Content-Type' => 'application/json',
+            'API-Key' => 'b12a19f4521d44abc8d613efca7f9c23c88', 
+        ])->get('https://api.hyros.com/v1/api/v1.0/attribution', [
+            "attributionModel" => 'last_click',
+            "startDate" => '2022-11-01',
+            "endDate" => '2022-11-15',
+            "level" => 'google_campaign',
+            "fields" => 'revenue,total_revenue,refund,unique_sales',
+            "ids" => 'ids=1057231095,10113550076,10127550431',
+            "dayOfAttribution" => false,
+            "scientificDaysRange" => 30
         ]);
         $data = json_decode($response->getBody()->getContents());
         dd($data);
