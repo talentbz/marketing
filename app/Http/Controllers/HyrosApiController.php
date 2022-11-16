@@ -22,7 +22,7 @@ class HyrosApiController extends Controller
             "dayOfAttribution" => false,
             "scientificDaysRange" => 30
         ]);
-        $data = $response->getBody()->getContents();
+        $data = json_decode($response->getBody()->getContents());
         dd($data);
         return json_decode($response);
     }
