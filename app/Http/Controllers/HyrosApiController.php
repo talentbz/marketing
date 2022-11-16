@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Http;
 class HyrosApiController extends Controller
 {
     public function getMTD( Request $request){
-        return view('welcome');
+        // return view('welcome');
         // $request = Http::get('https://private-ea0372-hyros.apiary-mock.com/v1/api/v1.0/attribution', [
         //     "attributionModel" => 'last_click',
         //     "startDate" => '2020-05-12T10:00:00',
