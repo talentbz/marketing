@@ -42,8 +42,8 @@ class HyrosApiController extends Controller
             'API-Key' => 'b12a19f4521d44abc8d613efca7f9c23c88', 
         ])->get('https://private-ea0372-hyros.apiary-mock.com/v1/api/v1.0/attribution', [
             "attributionModel" => 'last_click',
-            "startDate" => '2021-11-01',
-            "endDate" => '2021-11-15',
+            "startDate" => '2022-11-01',
+            "endDate" => '2022-11-15',
             "level" => 'google_campaign',
             "fields" => 'revenue, total_revenue, refund, unique_sales',
             // "ids" => '1057231095,10113550076,10127550431',
