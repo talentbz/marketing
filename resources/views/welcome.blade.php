@@ -9,9 +9,9 @@
 <body>
     <h1>123</h1>
     <script>
-        var request = new XMLHttpRequest();
+       var request = new XMLHttpRequest();
 
-        request.open('GET', 'https://private-ea0372-hyros.apiary-mock.com/v1/api/v1.0/attribution?attributionModel=last_click&startDate=2022-11-01T10:00:00&endDate=2022-11-15T10:00:00&level=google_campaign&fields=revenue,total_revenue,refund,unique_sales&ids=ids=1057231095,10113550076,10127550431&currency={currency}&dayOfAttribution=false&scientificDaysRange=30');
+        request.open('GET', 'https://api.hyros.com/v1/api/v1.0/attribution?attributionModel={attributionModel}&startDate={startDate}&endDate={endDate}&level={level}&fields={fields}&ids={ids}&currency={currency}&dayOfAttribution={dayOfAttribution}&scientificDaysRange={scientificDaysRange}');
 
         request.setRequestHeader('Content-Type', 'application/json');
         request.setRequestHeader('API-Key', 'b12a19f4521d44abc8d613efca7f9c23c88');

@@ -36,7 +36,7 @@ class HyrosApiController extends Controller
         //     }
         // }
         // dd(1);
-        // return view('welcome');
+        return view('welcome');
         // $response = Http::withHeaders([
         //     'Content-Type' => 'application/json',
         //     'API-Key' => 'e60d2c62b8dc5ae28dce738dc5d925cb', 
@@ -53,20 +53,20 @@ class HyrosApiController extends Controller
         // $data = json_decode($response->getBody()->getContents());
         // dd($data);
         // return json_decode($response);
-        $ch = curl_init();
+        // $ch = curl_init();
 
-        curl_setopt($ch, CURLOPT_URL, "https://private-ea0372-hyros.apiary-mock.com/v1/api/v1.0/attribution?attributionModel={attributionModel}&startDate={startDate}&endDate={endDate}&level={level}&fields={fields}&ids={ids}&currency={currency}&dayOfAttribution={dayOfAttribution}&scientificDaysRange={scientificDaysRange}");
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-        curl_setopt($ch, CURLOPT_HEADER, FALSE);
+        // curl_setopt($ch, CURLOPT_URL, "https://private-ea0372-hyros.apiary-mock.com/v1/api/v1.0/attribution?attributionModel={attributionModel}&startDate={startDate}&endDate={endDate}&level={level}&fields={fields}&ids={ids}&currency={currency}&dayOfAttribution={dayOfAttribution}&scientificDaysRange={scientificDaysRange}");
+        // curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+        // curl_setopt($ch, CURLOPT_HEADER, FALSE);
         
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-          "Content-Type: application/json",
-          "API-Key: b12a19f4521d44abc8d613efca7f9c23c88"
-        ));
+        // curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+        //   "Content-Type: application/json",
+        //   "API-Key: b12a19f4521d44abc8d613efca7f9c23c88"
+        // ));
         
-        $response = curl_exec($ch);
-        curl_close($ch);
+        // $response = curl_exec($ch);
+        // curl_close($ch);
         
-        var_dump($response);
+        // var_dump($response);
     }
 }
