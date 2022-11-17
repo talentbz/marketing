@@ -11,31 +11,31 @@ use Google\Ads\GoogleAds\Lib\V12\GoogleAdsClient;
 class HyrosApiController extends Controller
 {
     public function getMTD( Request $request, GoogleAdsClient $googleAdsClient){
-        $manageId = env("MANAGE_ID");
-        $customerIdList = 'SELECT customer_client.id FROM customer_client WHERE customer_client.manager != TRUE AND customer_client.test_account != TRUE AND customer_client.hidden != TRUE';
-        $customerIdResponse = $googleAdsClient->getGoogleAdsServiceClient()->search(
-            $manageId,
-            $customerIdList,
-        );
-        foreach ($customerIdResponse->iterateAllElements() as $row){
-            $customerId = $row->getCustomerClient()->getId();
-            $query = 'SELECT campaign.id, customer.descriptive_name FROM campaign ORDER BY customer.id ASC';
+        // $manageId = env("MANAGE_ID");
+        // $customerIdList = 'SELECT customer_client.id FROM customer_client WHERE customer_client.manager != TRUE AND customer_client.test_account != TRUE AND customer_client.hidden != TRUE';
+        // $customerIdResponse = $googleAdsClient->getGoogleAdsServiceClient()->search(
+        //     $manageId,
+        //     $customerIdList,
+        // );
+        // foreach ($customerIdResponse->iterateAllElements() as $row){
+        //     $customerId = $row->getCustomerClient()->getId();
+        //     $query = 'SELECT campaign.id, customer.descriptive_name FROM campaign ORDER BY customer.id ASC';
             
-            try {
-                $response = $googleAdsClient->getGoogleAdsServiceClient()->search(
-                    $customerId,
-                    $query,
-                );
-            }
-            catch (Exception $ex) {
-              continue;
-            }
-            foreach ($response->iterateAllElements() as $sth){
-                echo $sth->getCustomer()->getDescriptiveName().'-------->'.$sth->getCampaign()->getId();
-                echo '<br>';
-            }
-        }
-        dd(1);
+        //     try {
+        //         $response = $googleAdsClient->getGoogleAdsServiceClient()->search(
+        //             $customerId,
+        //             $query,
+        //         );
+        //     }
+        //     catch (Exception $ex) {
+        //       continue;
+        //     }
+        //     foreach ($response->iterateAllElements() as $sth){
+        //         echo $sth->getCustomer()->getDescriptiveName().'-------->'.$sth->getCampaign()->getId();
+        //         echo '<br>';
+        //     }
+        // }
+        // dd(1);
         // return view('welcome');5943545658
         $api_key_array = [
             ['name' => 'FlashBooth', 'email'=>'support@getflashbooth.com', 'account_id'=>'3037085077', 'api_key'=>'3cc42b25696ddf6ce84626f2847163110743188b3cbb4c1dab84783cf75353f3'],
@@ -71,7 +71,7 @@ class HyrosApiController extends Controller
             "startDate" => '2022-11-01',
             "endDate" => '2022-11-15',
             "level" => 'google_campaign',
-            "fields" => 'sales',
+            "fields" => 'revenue, sales',
             "ids" => '17751193414, 18323790211',
             "dayOfAttribution" => false
         ]);
