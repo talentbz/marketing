@@ -42,11 +42,11 @@ class HyrosApiController extends Controller
             'API-Key' => 'a8cc2f0502a2244f57e62b40a023e81cab4cd193e0f3fb54a3ef33c948539a09', 
         ])->get('https://api.hyros.com/v1/api/v1.0/attribution', [
             "attributionModel" => 'last_click',
-            "startDate" => '2022-11-01',
+            "startDate" => '2022-03-18',
             "endDate" => '2022-11-15',
             "level" => 'google_ad',
             "fields" => 'sales',
-            "ids" => '16653716866, 16865167899',
+            "ids" => '16653716866,16865167899',
             "dayOfAttribution" => false
         ]);
         $data = json_decode($response->getBody()->getContents());
