@@ -63,6 +63,47 @@ class HyrosApiController extends Controller
             ['name' => 'USProDevices', 'email'=>'zac@zrichmedia.com', 'api_key'=>''],
             ['name' => 'ZRichMedia', 'email'=>'zac@zrichmedia.com', 'api_key'=>''],
         ];
+        foreach($api_key_array as $row){
+                if(isset($row['account_id'])){
+                    $customerId = $row['account_id'];
+                    $query = 'SELECT campaign.id, customer.descriptive_name, campaign.status FROM campaign WHERE campaign.status = "ENABLED" AND campaign.status != "UNKNOWN" AND segments.date DURING THIS_MONTH ORDER BY customer.id ASC';
+                    
+                    try {
+                        $response = $googleAdsClient->getGoogleAdsServiceClient()->search(
+                            $customerId,
+                            $query,
+                        );
+                    }
+                    catch (Exception $ex) {
+                        continue;
+                    }
+                    $total_rev = 0;
+                    foreach ($response->iterateAllElements() as $sth){
+                        try {
+                            $get_hyros_data = Http::withHeaders([
+                                'Content-Type' => 'application/json',
+                                'API-Key' => $row['api_key'], 
+                            ])->get('https://api.hyros.com/v1/api/v1.0/attribution', [
+                                "attributionModel" => 'last_click',
+                                "startDate" => '2022-11-01',
+                                "endDate" => '2022-11-17',
+                                'currency' => 'user_currency',
+                                "level" => 'google_campaign',
+                                "fields" => 'revenue, sales, total_revenue',
+                                "ids" => $sth->getCampaign()->getId(),
+                                "dayOfAttribution" => false,
+                            ]);
+                            $total_rev += $get_hyros_data->result->revenue;
+                        }
+                        catch (Exception $ex) {
+                            continue;
+                        }
+                        echo $sth->getCustomer()->getDescriptiveName().'-------->'.$sth->getCampaign()->getId().'-------------->'.$sth->getCampaign()->getStatus().'---->'.$total_rev;
+                        echo '<br>';
+                    }
+                }
+        }
+        dd(1);
         // dd($api_key_array);
         $response = Http::withHeaders([
             'Content-Type' => 'application/json',
@@ -70,7 +111,7 @@ class HyrosApiController extends Controller
         ])->get('https://api.hyros.com/v1/api/v1.0/attribution', [
             "attributionModel" => 'last_click',
             "startDate" => '2022-11-02',
-            "endDate" => '2022-11-15',
+            "endDate" => '2022-11-17',
             'currency' => 'user_currency',
             "level" => 'google_campaign',
             "fields" => 'revenue, sales, total_revenue',
