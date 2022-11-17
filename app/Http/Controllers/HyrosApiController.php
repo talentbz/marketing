@@ -70,11 +70,11 @@ class HyrosApiController extends Controller
             "attributionModel" => 'last_click',
             "startDate" => '2022-11-01',
             "endDate" => '2022-11-15',
+            'currency' => 'user_currency',
             "level" => 'google_campaign',
             "fields" => 'revenue, sales',
-            "ids" => '13048019932, 13066429405, 13530231803, 18828997569, 16913767610',
+            "ids" => '13021951885, 13048019932, 13066429405, 13530231803, 18828997569, 16913767610',
             "dayOfAttribution" => false,
-            'currency' => 'user_currency',
         ]);
         $data = json_decode($response->getBody()->getContents());
         dd($data);
