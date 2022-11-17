@@ -93,8 +93,8 @@ class HyrosApiController extends Controller
                                 "ids" => $sth->getCampaign()->getId(),
                                 "dayOfAttribution" => false,
                             ]);
-                            dd($get_hyros_data);
-                            $total_rev += $get_hyros_data->result->revenue;
+                            $data = json_decode($get_hyros_data->getBody()->getContents());
+                            $total_rev += $data->result->revenue;
                         }
                         catch (Exception $ex) {
                             continue;
