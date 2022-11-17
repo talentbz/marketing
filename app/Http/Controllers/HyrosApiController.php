@@ -94,7 +94,7 @@ class HyrosApiController extends Controller
                         ]);
                         if($get_hyros_data->getStatusCode() == 200){
                             $data = json_decode($get_hyros_data->getBody()->getContents());
-                            // dd($data->result);
+                            dd($data->result[0]->revenue);
                             $total_rev += $data->result->revenue;
                         }
                         echo $sth->getCustomer()->getDescriptiveName().'-------->'.$sth->getCampaign()->getId().'-------------->'.$sth->getCampaign()->getStatus().'---->'.$total_rev;
