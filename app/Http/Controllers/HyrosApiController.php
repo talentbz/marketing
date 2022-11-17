@@ -77,8 +77,8 @@ class HyrosApiController extends Controller
                     catch (Exception $ex) {
                     continue;
                     }
+                    $total_rev = 0;
                     foreach ($response->iterateAllElements() as $sth){
-                        $total_rev = 0;
                         try {
                             $get_hyros_data = Http::withHeaders([
                                 'Content-Type' => 'application/json',
@@ -93,12 +93,12 @@ class HyrosApiController extends Controller
                                 "ids" => $sth->getCampaign()->getId(),
                                 "dayOfAttribution" => false,
                             ]);
-                            $data = json_decode($get_hyros_data->getBody()->getContents());
-                            $total_rev += $data->result->revenue;
                         }
                         catch (Exception $ex) {
                             continue;
                         }
+                        $data = json_decode($get_hyros_data->getBody()->getContents());
+                        $total_rev += $data->result->revenue;
                         echo $sth->getCustomer()->getDescriptiveName().'-------->'.$sth->getCampaign()->getId().'-------------->'.$sth->getCampaign()->getStatus().'---->'.$total_rev;
                         echo '<br>';
                     }
