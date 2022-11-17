@@ -63,7 +63,7 @@ class HyrosApiController extends Controller
             ['name' => 'USProDevices', 'email'=>'zac@zrichmedia.com', 'api_key'=>''],
             ['name' => 'ZRichMedia', 'email'=>'zac@zrichmedia.com', 'api_key'=>''],
         ];
-        dd($api_key_array);
+        // dd($api_key_array);
         $response = Http::withHeaders([
             'Content-Type' => 'application/json',
             'API-Key' => '1decb2a00b8d72346ad12514d0dc2effddea7d004c283c69b98bd0ff35c3650c', 
