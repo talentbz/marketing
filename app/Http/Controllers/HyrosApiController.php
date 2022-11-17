@@ -46,7 +46,7 @@ class HyrosApiController extends Controller
             "endDate" => '2022-11-15',
             "level" => 'google_ad',
             "fields" => 'sales',
-            // "ids" => '6896178013',
+            "ids" => '',
             "dayOfAttribution" => false
         ]);
         $data = json_decode($response->getBody()->getContents());
