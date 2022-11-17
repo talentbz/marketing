@@ -69,7 +69,7 @@ class HyrosApiController extends Controller
             'API-Key' => '1decb2a00b8d72346ad12514d0dc2effddea7d004c283c69b98bd0ff35c3650c', 
         ])->get('https://api.hyros.com/v1/api/v1.0/attribution', [
             "attributionModel" => 'last_click',
-            "startDate" => '2022-11-01',
+            "startDate" => '2022-11-02',
             "endDate" => '2022-11-15',
             'currency' => 'user_currency',
             "level" => 'google_campaign',
