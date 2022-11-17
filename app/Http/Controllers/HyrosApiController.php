@@ -39,7 +39,7 @@ class HyrosApiController extends Controller
         // return view('welcome');
         $response = Http::withHeaders([
             'Content-Type' => 'application/json',
-            'API-Key' => '85616b2cc73a6376a31fd490ca8b8f8e9edccc695d423aaee0e79f62f01184a6', 
+            'API-Key' => 'd2ff11b669d40ceb795e736678bea03c17f829264c16631ded3c477bc9d10eab', 
         ])->get('https://api.hyros.com/v1/api/v1.0/attribution', [
             "attributionModel" => 'last_click',
             "startDate" => '2022-11-01',
