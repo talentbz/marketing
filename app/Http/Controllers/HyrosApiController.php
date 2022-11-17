@@ -79,25 +79,25 @@ class HyrosApiController extends Controller
                     }
                     $total_rev = 0;
                     foreach ($response->iterateAllElements() as $sth){
+                        $get_hyros_data = Http::withHeaders([
+                            'Content-Type' => 'application/json',
+                            'API-Key' => $row['api_key'], 
+                        ])->get('https://api.hyros.com/v1/api/v1.0/attribution', [
+                            "attributionModel" => 'last_click',
+                            "startDate" => '2022-11-01',
+                            "endDate" => '2022-11-17',
+                            'currency' => 'user_currency',
+                            "level" => 'google_campaign',
+                            "fields" => 'revenue, sales, total_revenue',
+                            "ids" => $sth->getCampaign()->getId(),
+                            "dayOfAttribution" => false,
+                        ]);
                         try {
-                            $get_hyros_data = Http::withHeaders([
-                                'Content-Type' => 'application/json',
-                                'API-Key' => $row['api_key'], 
-                            ])->get('https://api.hyros.com/v1/api/v1.0/attribution', [
-                                "attributionModel" => 'last_click',
-                                "startDate" => '2022-11-01',
-                                "endDate" => '2022-11-17',
-                                'currency' => 'user_currency',
-                                "level" => 'google_campaign',
-                                "fields" => 'revenue, sales, total_revenue',
-                                "ids" => $sth->getCampaign()->getId(),
-                                "dayOfAttribution" => false,
-                            ]);
+                            $data = json_decode($get_hyros_data->getBody()->getContents());
                         }
                         catch (Exception $ex) {
                             continue;
                         }
-                        $data = json_decode($get_hyros_data->getBody()->getContents());
                         $total_rev += $data->result->revenue;
                         echo $sth->getCustomer()->getDescriptiveName().'-------->'.$sth->getCampaign()->getId().'-------------->'.$sth->getCampaign()->getStatus().'---->'.$total_rev;
                         echo '<br>';
