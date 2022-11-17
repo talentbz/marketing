@@ -39,14 +39,14 @@ class HyrosApiController extends Controller
         // return view('welcome');5943545658
         $response = Http::withHeaders([
             'Content-Type' => 'application/json',
-            'API-Key' => 'b1c3667cd07c493cbaec26b536d32af6429baf30c3874b44e14235222b28ef62', 
+            'API-Key' => 'a8cc2f0502a2244f57e62b40a023e81cab4cd193e0f3fb54a3ef33c948539a09', 
         ])->get('https://api.hyros.com/v1/api/v1.0/attribution', [
             "attributionModel" => 'last_click',
             "startDate" => '2022-11-01',
             "endDate" => '2022-11-15',
             "level" => 'google_ad',
             "fields" => 'sales',
-            "ids" => '',
+            "ids" => '16653716866, 16865167899',
             "dayOfAttribution" => false
         ]);
         $data = json_decode($response->getBody()->getContents());
