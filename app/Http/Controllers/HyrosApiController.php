@@ -92,6 +92,7 @@ class HyrosApiController extends Controller
                             "ids" => $sth->getCampaign()->getId(),
                             "dayOfAttribution" => false,
                         ]);
+                        dd($get_hyros_data);
                         try {
                             $data = json_decode($get_hyros_data->getBody()->getContents());
                         }
