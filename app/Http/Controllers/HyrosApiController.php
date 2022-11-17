@@ -11,12 +11,12 @@ use Google\Ads\GoogleAds\Lib\V12\GoogleAdsClient;
 class HyrosApiController extends Controller
 {
     public function getMTD( Request $request, GoogleAdsClient $googleAdsClient){
-        $manageId = env("MANAGE_ID");
-        $customerIdList = 'SELECT customer_client.id FROM customer_client WHERE customer_client.manager != TRUE AND customer_client.test_account != TRUE AND customer_client.hidden != TRUE';
-        $customerIdResponse = $googleAdsClient->getGoogleAdsServiceClient()->search(
-            $manageId,
-            $customerIdList,
-        );
+        // $manageId = env("MANAGE_ID");
+        // $customerIdList = 'SELECT customer_client.id FROM customer_client WHERE customer_client.manager != TRUE AND customer_client.test_account != TRUE AND customer_client.hidden != TRUE';
+        // $customerIdResponse = $googleAdsClient->getGoogleAdsServiceClient()->search(
+        //     $manageId,
+        //     $customerIdList,
+        // );
         // foreach ($customerIdResponse->iterateAllElements() as $row){
         //     $customerId = $row->getCustomerClient()->getId();
         //     $query = 'SELECT campaign.id, customer.descriptive_name FROM campaign ORDER BY customer.id ASC';
