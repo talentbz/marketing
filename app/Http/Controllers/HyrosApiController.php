@@ -36,7 +36,7 @@ class HyrosApiController extends Controller
         //     }
         // }
         // dd(1);
-        // return view('welcome');5943545658
+        // return view('welcome');
         $api_key_array = [
             ['name' => 'FlashBooth', 'email'=>'support@getflashbooth.com', 'account_id'=>'3037085077', 'api_key'=>'3cc42b25696ddf6ce84626f2847163110743188b3cbb4c1dab84783cf75353f3'],
             ['name' => 'FlyFixed', 'email'=>'support@flyfixed.com', 'account_id'=>'6802743891', 'api_key'=>'1decb2a00b8d72346ad12514d0dc2effddea7d004c283c69b98bd0ff35c3650c'],
@@ -63,6 +63,7 @@ class HyrosApiController extends Controller
             ['name' => 'USProDevices', 'email'=>'zac@zrichmedia.com', 'api_key'=>''],
             ['name' => 'ZRichMedia', 'email'=>'zac@zrichmedia.com', 'api_key'=>''],
         ];
+        dd($api_key_array);
         $response = Http::withHeaders([
             'Content-Type' => 'application/json',
             'API-Key' => '1decb2a00b8d72346ad12514d0dc2effddea7d004c283c69b98bd0ff35c3650c', 
@@ -72,12 +73,17 @@ class HyrosApiController extends Controller
             "endDate" => '2022-11-15',
             'currency' => 'user_currency',
             "level" => 'google_campaign',
-            "fields" => 'revenue, sales',
+            "fields" => 'revenue, sales, total_revenue',
             "ids" => '13048019932, 13066429405, 13530231803, 18828997569, 16913767610',
             "dayOfAttribution" => false,
         ]);
         $data = json_decode($response->getBody()->getContents());
-        dd($data);
+        $total_rev = 0;
+        foreach($data->result as $row){
+            $temp = $row->total_revenue;
+            $total_rev += $temp;
+        }
+        dd($total_rev);
         // return json_decode($response);
         // $ch = curl_init();
 
