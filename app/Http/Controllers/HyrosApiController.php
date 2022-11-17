@@ -74,7 +74,7 @@ class HyrosApiController extends Controller
             'currency' => 'user_currency',
             "level" => 'google_campaign',
             "fields" => 'revenue, sales, total_revenue',
-            "ids" => '1723572693, 10329099015',
+            "ids" => '18399457117, 10329099015',
             "dayOfAttribution" => false,
         ]);
         $data = json_decode($response->getBody()->getContents());
