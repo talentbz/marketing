@@ -98,6 +98,7 @@ class HyrosApiController extends Controller
                         catch (Exception $ex) {
                             continue;
                         }
+                        dd($data);
                         $total_rev += $data->result->revenue;
                         echo $sth->getCustomer()->getDescriptiveName().'-------->'.$sth->getCampaign()->getId().'-------------->'.$sth->getCampaign()->getStatus().'---->'.$total_rev;
                         echo '<br>';
