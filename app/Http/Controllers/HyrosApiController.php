@@ -66,7 +66,7 @@ class HyrosApiController extends Controller
         foreach($api_key_array as $row){
                 if(isset($row['account_id'])){
                     $customerId = $row['account_id'];
-                    $query = 'SELECT campaign.id, customer.descriptive_name, campaign.status FROM campaign WHERE segments.date DURING THIS_MONTH ORDER BY customer.id ASC';
+                    $query = 'SELECT campaign.id, customer.descriptive_name, campaign.status FROM campaign WHERE campaign.status = "ENABLED" AND campaign.status != "UNKNOWN" AND segments.date DURING THIS_MONTH ORDER BY customer.id ASC';
                     
                     try {
                         $response = $googleAdsClient->getGoogleAdsServiceClient()->search(
