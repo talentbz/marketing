@@ -78,6 +78,7 @@ class HyrosApiController extends Controller
             "dayOfAttribution" => false,
         ]);
         $data = json_decode($response->getBody()->getContents());
+        dd($data);
         $total_rev = 0;
         foreach($data->result as $row){
             $temp = $row->total_revenue;
