@@ -46,7 +46,7 @@ class HyrosApiController extends Controller
             "endDate" => '2022-11-15',
             "level" => 'google_campaign',
             "fields" => 'revenue,total_revenue,refund,unique_sales',
-            "ids" => 'ids=7606839896',
+            "ids" => 'ids=11762015507,11764394077,11775176553,11790576915,11790576918,11790576921,11893336487',
             "dayOfAttribution" => false,
             "scientificDaysRange" => 30
         ]);
