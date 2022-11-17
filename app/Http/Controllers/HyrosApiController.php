@@ -44,11 +44,10 @@ class HyrosApiController extends Controller
             "attributionModel" => 'last_click',
             "startDate" => '2022-11-01',
             "endDate" => '2022-11-15',
-            "level" => 'google_campaign',
-            "fields" => 'revenue,total_revenue,sales',
+            "level" => 'google_ad',
+            "fields" => 'sales',
             "ids" => '17731552073,17751755231',
-            "dayOfAttribution" => false,
-            "scientificDaysRange" => 30
+            "dayOfAttribution" => false
         ]);
         $data = json_decode($response->getBody()->getContents());
         dd($data);
