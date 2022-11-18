@@ -21,6 +21,7 @@ namespace App\Http\Controllers;
 use Exception;
 use Error;
 use Airtable;
+use Illuminate\Support\Facades\Http;
 use Google\Ads\GoogleAds\Lib\V12\GoogleAdsClient;
 use Google\Ads\GoogleAds\Util\FieldMasks;
 use Google\Ads\GoogleAds\Util\V12\ResourceNames;
