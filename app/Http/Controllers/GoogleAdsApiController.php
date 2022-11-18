@@ -478,7 +478,7 @@ class GoogleAdsApiController extends Controller
                     foreach ($get_campaign->iterateAllElements() as $campaign_row){
                         $get_hyros_data = Http::withHeaders([
                             'Content-Type' => 'application/json',
-                            'API-Key' => $campaign_row['api_key'], 
+                            'API-Key' => $api_row['api_key'], 
                         ])->get('https://api.hyros.com/v1/api/v1.0/attribution', [
                             "attributionModel" => 'last_click',
                             "startDate" => '2022-'.$current_month_zero.'-01',
