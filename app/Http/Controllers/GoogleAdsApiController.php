@@ -350,7 +350,23 @@ class GoogleAdsApiController extends Controller
         $total_account_arr = array();
 
         $current_month = date('m');
-
+        $current_month_zero = '';
+        for ($i = 1; $i <= $current_month; $i++){
+            if ($i < 10){
+                $current_month_zero = (string)("0".$i);
+            }else{
+                $current_month_zero = (string)$i;
+            }
+        }
+        $current_date = date('d');
+        $current_date_zero = '';        
+        for ($i = 1; $i <= $current_date; $i++){
+            if ($i < 10){
+                $current_date_zero = (string)("0".$i);
+            }else{
+                $current_date_zero = (string)$i;
+            }
+        }
         // hyros api key list
         $api_key_array = [
             ['name' => 'FlashBooth', 'email'=>'support@getflashbooth.com', 'account_id'=>'3037085077', 'api_key'=>'3cc42b25696ddf6ce84626f2847163110743188b3cbb4c1dab84783cf75353f3'],
@@ -434,7 +450,7 @@ class GoogleAdsApiController extends Controller
                     $individual_acc_arr[$month_name_arr[$i]] = round($temp_cost->getMetrics()->getCostMicros() / 1000000, 2);
                 }
             }
-
+          
             $ytd = 0;
 
             for ($j = 1; $j <= 12; $j++){
@@ -443,24 +459,45 @@ class GoogleAdsApiController extends Controller
 
             $individual_acc_arr["YTD_Cost"] = $ytd;
 
+            // get rev data in hyros
             foreach($api_key_array as $api_row){
-                if($api_row['account_id'] && $api_row['api_key'] && $api_row['account_id']==$customerId){
-                    $response = Http::withHeaders([
-                        'Content-Type' => 'application/json',
-                        'API-Key' => $api_row['api_key'], 
-                    ])->get('https://api.hyros.com/v1/api/v1.0/attribution', [
-                        "attributionModel" => 'last_click',
-                        "startDate" => '2022-11-02',
-                        "endDate" => '2022-11-17',
-                        'currency' => 'user_currency',
-                        "level" => 'google_campaign',
-                        "fields" => 'revenue, sales, total_revenue',
-                        "ids" => '13530231803, 13066429405, 13048019932, 16913767610, 18828997569',
-                        "dayOfAttribution" => false,
-                    ]);
-                    $data = json_decode($response->getBody()->getContents());
+                if(isset($api_row['account_id']) && $api_row['account_id']==$customerId){
+                    $campaign_query = 'SELECT campaign.id, customer.descriptive_name, campaign.status FROM campaign WHERE campaign.status = "ENABLED" AND campaign.status != "UNKNOWN" AND segments.date DURING THIS_MONTH ORDER BY customer.id ASC';
+                    
+                    try {
+                        $get_campaign = $googleAdsClient->getGoogleAdsServiceClient()->search(
+                            $customerId,
+                            $campaign_query,
+                        );
+                    }
+                    catch (Exception $ex) {
+                        continue;
+                    }
+                    $total_rev = 0;
+                    foreach ($get_campaign->iterateAllElements() as $campaign_row){
+                        $get_hyros_data = Http::withHeaders([
+                            'Content-Type' => 'application/json',
+                            'API-Key' => $row['api_key'], 
+                        ])->get('https://api.hyros.com/v1/api/v1.0/attribution', [
+                            "attributionModel" => 'last_click',
+                            "startDate" => '2022-'.$current_month_zero.'-01',
+                            "endDate" => '2022-'.$current_month_zero.'-'.$current_date_zero,
+                            'currency' => 'user_currency',
+                            "level" => 'google_campaign',
+                            "fields" => 'revenue, sales, total_revenue',
+                            "ids" => $campaign_row->getCampaign()->getId(),
+                            "dayOfAttribution" => false,
+                        ]);
+                        if($get_hyros_data->getStatusCode() == 200){
+                            $data = json_decode($get_hyros_data->getBody()->getContents());
+                            // dd($data->result[0]->revenue);
+                            $total_rev += $data->result[0]->revenue;
+                        }
+                    }
+                    $individual_acc_arr["MTD_Sales"] = $total_rev;
                 }
             }
+
 
             array_push($total_account_arr, $individual_acc_arr);
         }
