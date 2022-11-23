@@ -9,10 +9,14 @@
         "facade/ignition": "^2.3.6",
         "fideloper/proxy": "^4.0",
         "googleads/google-ads-php": ">=13.0",
+        "googleads/googleads-php-lib": "49.0.0",
+        "guzzlehttp/guzzle": "^7.2",
+        "guzzlehttp/psr7": "^1.2",
         "laravel/framework": "^8.0",
         "laravel/tinker": "^2.0",
         "symfony/http-foundation": "^5.0",
-        "zadorin/airtable-php": "^0.6.0"
+        "zadorin/airtable-php": "^0.6.0",
+        "tmarois/laravel-ads-sdk": "^1.5"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

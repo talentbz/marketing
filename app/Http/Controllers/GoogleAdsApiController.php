@@ -294,7 +294,7 @@ class GoogleAdsApiController extends Controller
 
         $camp_status_arr = ['unknown_0', 'unkown_1', 'Eligible', 'Paused', 'Removed', 'unkown_5', 'unkown_6', 'unkown_7', 'unkown_8', 'unkown_9'];
         $customerIdList = 'SELECT customer_client.id FROM customer_client WHERE customer_client.manager != TRUE AND customer_client.test_account != TRUE AND customer_client.hidden != TRUE';
-        $manageId = env("MANAGE_ID");
+        $manageId = env("GA_MANAGE_ID");
         $customerIdResponse = $googleAdsClient->getGoogleAdsServiceClient()->search(
             $manageId,
             $customerIdList,
