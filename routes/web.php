@@ -47,4 +47,8 @@ Route::get(
     'HyrosApiController@getMTD'
 );
 
+Route::get(
+    'get_fb',
+    'FbApiController@getMTD'
+);
 
