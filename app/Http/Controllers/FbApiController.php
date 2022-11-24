@@ -9,6 +9,7 @@ class FbApiController extends Controller
 {
     public function getMTD( Request $request){
         $facebookAds = LaravelAds::facebookAds()->with('ACCOUNT_ID');
-        dd($facebookAds);
+        $campaigns = $facebookAds->fetch()->getCampaigns();
+        dd($campaigns);
     }
 }
