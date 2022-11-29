@@ -10,7 +10,7 @@ use FacebookAds\Object\Fields\AdsInsightsFields;
 use FacebookAds\Object\Campaign;
 use FacebookAds\Api;
 use FacebookAds\Logger\CurlLogger;
-use FacebookAds\Object\Values\InsightsPresets;
+use FacebookAds\Object\Values\InsightsResultDatePresetValues;
 
 
 class FbApiController extends Controller
@@ -41,7 +41,7 @@ class FbApiController extends Controller
         );
         
         $params = array(
-            'date_preset' => InsightsPresets::LAST_7_DAYS,
+            'date_preset' => InsightsResultDatePresetValues::THIS_MONTH,
         );
         
         $account->getInsights($fields, $params);
