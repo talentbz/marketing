@@ -20,12 +20,12 @@ class FbApiController extends Controller
         $id = env('FB_ACCOUNT_ID');
         $api = Api::init($app_id, $app_secret, $access_token);
         $api->setLogger(new CurlLogger());
-        $fields = array(
-            AdAccountFields::ID,
-            AdAccountFields::NAME,
-          );
+        // $fields = array(
+        //     AdAccountFields::ID,
+        //     AdAccountFields::NAME,
+        //   );
           
-          $account = (new AdAccount($id))->getSelf($fields);
+          $account = (new AdAccount($id))->getInsights();
           dd($account);
         // $facebookAds = LaravelAds::facebookAds()->with(806688472849920);
         // $campaigns = $facebookAds->fetch()->getCampaigns();
