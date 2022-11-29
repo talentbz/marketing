@@ -19,7 +19,8 @@ class FbApiController extends Controller
         $access_token = env('FB_ACCESS_TOKEN');
         $app_secret = ('FB_APP_SECRET');
         $app_id = env('FB_APP_ID');
-        $id = env('FB_ACCOUNT_ID');
+        // $id = env('FB_ACCOUNT_ID');
+        $id= 'act_806688472849920';
         $api = Api::init($app_id, $app_secret, $access_token);
         $api->setLogger(new CurlLogger());
         $fields = array(
@@ -33,10 +34,11 @@ class FbApiController extends Controller
         );
         
         $params = array(
-            'date_preset' => InsightsResultDatePresetValues::THIS_MONTH,
+            // 'date_preset' => InsightsResultDatePresetValues::THIS_MONTH,
         );
-        
-        $account->getInsights($fields, $params)->getResponse()->getContent()['data'];
+        $cursor = $account->getCampaigns(['id','name']);
+        dd($cursor);
+        $account->getInsights($fields, $params);
           dd($account);
         // $facebookAds = LaravelAds::facebookAds()->with(806688472849920);
         // $campaigns = $facebookAds->fetch()->getCampaigns();
