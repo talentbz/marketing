@@ -27,7 +27,7 @@ class FbApiController extends Controller
         //     AdAccountFields::NAME,
         //   );
           
-          $account = new AdAccount(563903348250218);
+          $account = new AdAccount($id);
           $fields = array(
             AdsInsightsFields::AD_NAME,
         );
