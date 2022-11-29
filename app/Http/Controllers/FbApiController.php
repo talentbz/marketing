@@ -8,7 +8,7 @@ use LaravelAds;
 class FbApiController extends Controller
 {
     public function getMTD( Request $request){
-        $facebookAds = LaravelAds::facebookAds()->with(806688472849920);
+        $facebookAds = LaravelAds::facebookAds()->with(env('FB_ACCOUNT_ID'));
         $campaigns = $facebookAds->fetch()->getCampaigns();
         dd($campaigns);
     }
