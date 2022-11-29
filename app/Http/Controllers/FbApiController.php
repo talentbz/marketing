@@ -22,24 +22,27 @@ class FbApiController extends Controller
         $id = env('FB_ACCOUNT_ID');
         $api = Api::init($app_id, $app_secret, $access_token);
         $api->setLogger(new CurlLogger());
+        $fields = array(
+            'name',
+            'objective',
+          );
+          $params = array(
+            'effective_status' => array('ACTIVE','PAUSED'),
+          );
+          echo json_encode((new AdAccount($id))->getCampaigns(
+            $fields,
+            $params
+          )->getResponse()->getContent(), JSON_PRETTY_PRINT);
         // $fields = array(
         //     AdAccountFields::ID,
         //     AdAccountFields::NAME,
         // );
-          
-          $account = new AdAccount($id);
-          $fields = array(
-            'name',
-            // AdsInsightsFields::AD_NAME,
-        );
+        // $account = new AdAccount($id);
         
-        $params = array(
-            // 'date_preset' => InsightsResultDatePresetValues::THIS_MONTH,
-        );
-        $account->getInsights($fields, $params);
-          dd($account);
-        // $facebookAds = LaravelAds::facebookAds()->with(806688472849920);
-        // $campaigns = $facebookAds->fetch()->getCampaigns();
-        // dd($campaigns);
+        // $params = array(
+        //     'date_preset' => InsightsResultDatePresetValues::THIS_MONTH,
+        // );
+        // $account->getInsights($fields, $params);
+        // dd($account);
     }
 }
