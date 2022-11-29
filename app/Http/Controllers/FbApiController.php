@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use FacebookAds\Object\AdAccount;
-use FacebookAds\Object\AdsPixel;
 use FacebookAds\Object\Fields\AdAccountFields;
 use FacebookAds\Object\Fields\AdsInsightsFields;
 use FacebookAds\Object\Campaign;
@@ -28,20 +27,16 @@ class FbApiController extends Controller
         //     AdAccountFields::NAME,
         //   );
           
-        //   $account = new AdAccount($id);
-        //   $fields = array(
-        //     AdsInsightsFields::AD_NAME,
-        // );
-        $account = new AdsPixel($id);
-        $fields = array(
-            // 'code',
+          $account = new AdAccount($id);
+          $fields = array(
+            // AdsInsightsFields::AD_NAME,
         );
         
         $params = array(
-            //'date_preset' => InsightsResultDatePresetValues::THIS_MONTH,
+            // 'date_preset' => InsightsResultDatePresetValues::THIS_MONTH,
         );
         
-        $account->getSelf($fields, $params);
+        $account->getInsights($fields, $params);
           dd($account);
         // $facebookAds = LaravelAds::facebookAds()->with(806688472849920);
         // $campaigns = $facebookAds->fetch()->getCampaigns();
