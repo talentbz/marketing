@@ -37,7 +37,7 @@ class FbApiController extends Controller
             'date_preset' => InsightsResultDatePresetValues::THIS_MONTH,
         );
         
-        $account->getInsights($fields, $params);
+        $account->getInsights($fields, $params)->getResponse()->getContent()['data'];
           dd($account);
         // $facebookAds = LaravelAds::facebookAds()->with(806688472849920);
         // $campaigns = $facebookAds->fetch()->getCampaigns();
