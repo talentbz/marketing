@@ -28,23 +28,23 @@ class FbApiController extends Controller
         //   );
           
           $account = new AdAccount($id);
-          $fields = array(
-            AdsInsightsFields::AD_NAME,
-            AdsInsightsFields::ADSET_NAME,
-            AdsInsightsFields::CAMPAIGN_NAME,
-            AdsInsightsFields::ACCOUNT_NAME,
-            AdsInsightsFields::ACCOUNT_ID,
-            AdsInsightsFields::IMPRESSIONS,
-            AdsInsightsFields::INLINE_LINK_CLICKS,
-            AdsInsightsFields::SPEND,
-            AdsInsightsFields::AD_ID
-        );
+        //   $fields = array(
+        //     AdsInsightsFields::AD_NAME,
+        //     AdsInsightsFields::ADSET_NAME,
+        //     AdsInsightsFields::CAMPAIGN_NAME,
+        //     AdsInsightsFields::ACCOUNT_NAME,
+        //     AdsInsightsFields::ACCOUNT_ID,
+        //     AdsInsightsFields::IMPRESSIONS,
+        //     AdsInsightsFields::INLINE_LINK_CLICKS,
+        //     AdsInsightsFields::SPEND,
+        //     AdsInsightsFields::AD_ID
+        // );
         
         $params = array(
             'date_preset' => InsightsResultDatePresetValues::THIS_MONTH,
         );
         
-        $account->getInsights($fields, $params);
+        $account->getInsights(null, $params);
           dd($account);
         // $facebookAds = LaravelAds::facebookAds()->with(806688472849920);
         // $campaigns = $facebookAds->fetch()->getCampaigns();
