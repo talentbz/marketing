@@ -6,10 +6,11 @@ use Illuminate\Http\Request;
 
 use FacebookAds\Object\AdAccount;
 use FacebookAds\Object\Fields\AdAccountFields;
-use FacebookAds\Object\Fields\InsightsFields;
+use FacebookAds\Object\Fields\AdsInsightsFields;
 use FacebookAds\Object\Campaign;
 use FacebookAds\Api;
 use FacebookAds\Logger\CurlLogger;
+use FacebookAds\Object\Values\InsightsPresets;
 
 
 class FbApiController extends Controller
@@ -28,19 +29,19 @@ class FbApiController extends Controller
           
           $account = new AdAccount($id);
           $fields = array(
-            InsightsFields::AD_NAME,
-            InsightsFields::ADSET_NAME,
-            InsightsFields::CAMPAIGN_NAME,
-            InsightsFields::ACCOUNT_NAME,
-            InsightsFields::ACCOUNT_ID,
-            InsightsFields::IMPRESSIONS,
-            InsightsFields::INLINE_LINK_CLICKS,
-            InsightsFields::SPEND,
-            InsightsFields::AD_ID
+            AdsInsightsFields::AD_NAME,
+            AdsInsightsFields::ADSET_NAME,
+            AdsInsightsFields::CAMPAIGN_NAME,
+            AdsInsightsFields::ACCOUNT_NAME,
+            AdsInsightsFields::ACCOUNT_ID,
+            AdsInsightsFields::IMPRESSIONS,
+            AdsInsightsFields::INLINE_LINK_CLICKS,
+            AdsInsightsFields::SPEND,
+            AdsInsightsFields::AD_ID
         );
         
         $params = array(
-            'date_preset' => InsightsPresets::YESTERDAY
+            'date_preset' => InsightsPresets::LAST_7_DAYS,
         );
         
         $account->getInsights($fields, $params);
