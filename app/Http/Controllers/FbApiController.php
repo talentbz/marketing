@@ -30,13 +30,14 @@ class FbApiController extends Controller
           
           $account = new AdAccount($id);
           $fields = array(
+            'name',
             // AdsInsightsFields::AD_NAME,
         );
         
         $params = array(
             // 'date_preset' => InsightsResultDatePresetValues::THIS_MONTH,
         );
-        $cursor = $account->getCampaigns(['id','name']);
+        $cursor = $account->getSelf($fields, $params);
         dd($cursor);
         $account->getInsights($fields, $params);
           dd($account);
