@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b7c1d27d64b9307c879da82034dce0fd",
+    "content-hash": "f650b4592da24f6731e3abd76725fd5a",
     "packages": [
         {
             "name": "brick/math",
@@ -690,16 +690,16 @@
         },
         {
             "name": "facebook/php-business-sdk",
-            "version": "13.0.0",
+            "version": "15.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facebook/facebook-php-business-sdk.git",
-                "reference": "ee6c4a0b9c50555b9ba78f456bffd78bff51374a"
+                "reference": "b7268fe993086ac3bcf5d3e222b13fd28ca3159c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facebook/facebook-php-business-sdk/zipball/ee6c4a0b9c50555b9ba78f456bffd78bff51374a",
-                "reference": "ee6c4a0b9c50555b9ba78f456bffd78bff51374a",
+                "url": "https://api.github.com/repos/facebook/facebook-php-business-sdk/zipball/b7268fe993086ac3bcf5d3e222b13fd28ca3159c",
+                "reference": "b7268fe993086ac3bcf5d3e222b13fd28ca3159c",
                 "shasum": ""
             },
             "require": {
@@ -707,7 +707,7 @@
             },
             "require-dev": {
                 "mockery/mockery": "1.3.3",
-                "phpunit/phpunit": "~8",
+                "phpunit/phpunit": "~9",
                 "symfony/finder": "~2.6"
             },
             "type": "library",
@@ -728,9 +728,9 @@
                 "sdk"
             ],
             "support": {
-                "source": "https://github.com/facebook/facebook-php-business-sdk/tree/13.0.0"
+                "source": "https://github.com/facebook/facebook-php-business-sdk/tree/15.0.1"
             },
-            "time": "2022-03-30T01:49:10+00:00"
+            "time": "2022-11-07T20:33:37+00:00"
         },
         {
             "name": "fideloper/proxy",
@@ -2337,62 +2337,6 @@
                 }
             ],
             "time": "2022-04-17T13:12:02+00:00"
-        },
-        {
-            "name": "microsoft/bingads",
-            "version": "v0.12.13.6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/BingAds/BingAds-PHP-SDK.git",
-                "reference": "c04050c6d04894839d6a7fa1ef56eebe6cde6f53"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/BingAds/BingAds-PHP-SDK/zipball/c04050c6d04894839d6a7fa1ef56eebe6cde6f53",
-                "reference": "c04050c6d04894839d6a7fa1ef56eebe6cde6f53",
-                "shasum": ""
-            },
-            "require": {
-                "ext-curl": "*",
-                "ext-openssl": "*",
-                "ext-soap": "*",
-                "php": ">=7.1"
-            },
-            "require-dev": {
-                "ext-curl": "*",
-                "ext-openssl": "*",
-                "ext-soap": "*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Microsoft\\BingAds\\": "/src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "Microsoft",
-                    "homepage": "https://github.com/BingAds/BingAds-PHP-SDK/graphs/contributors"
-                }
-            ],
-            "description": "This project provides the PHP client library for the SOAP-based Bing Ads API at Microsoft.",
-            "homepage": "https://github.com/BingAds/BingAds-PHP-SDK",
-            "keywords": [
-                "bing ads",
-                "bingads",
-                "microsoft advertising",
-                "php",
-                "sdk"
-            ],
-            "support": {
-                "issues": "https://github.com/BingAds/BingAds-PHP-SDK/issues",
-                "source": "https://github.com/BingAds/BingAds-PHP-SDK/tree/v0.12.13.6"
-            },
-            "time": "2019-10-11T11:00:29+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -6183,68 +6127,6 @@
                 "source": "https://github.com/tijsverkoyen/CssToInlineStyles/tree/2.2.5"
             },
             "time": "2022-09-12T13:28:28+00:00"
-        },
-        {
-            "name": "tmarois/laravel-ads-sdk",
-            "version": "v1.5.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/tmarois/laravel-ads-sdk.git",
-                "reference": "a1a4ebf968377b9397156f9d124e68c2ba4b7ab1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/tmarois/laravel-ads-sdk/zipball/a1a4ebf968377b9397156f9d124e68c2ba4b7ab1",
-                "reference": "a1a4ebf968377b9397156f9d124e68c2ba4b7ab1",
-                "shasum": ""
-            },
-            "require": {
-                "facebook/php-business-sdk": "^13.0",
-                "googleads/googleads-php-lib": "^49.0",
-                "microsoft/bingads": "^0.12",
-                "php": ">=7"
-            },
-            "require-dev": {
-                "php-coveralls/php-coveralls": "^2.0",
-                "phpunit/phpunit": "6.*"
-            },
-            "type": "package",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "LaravelAds\\Providers\\LaravelAdsProvider"
-                    ],
-                    "aliases": {
-                        "LaravelAds": "LaravelAds\\Facades\\LaravelAds"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "LaravelAds\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "authors": [
-                {
-                    "name": "Timothy Marois",
-                    "email": "timothymarois@gmail.com"
-                }
-            ],
-            "description": "A Laravel Ads SDK for Google Ads, Bing Ads and Facebook Ads API",
-            "homepage": "https://github.com/tmarois/laravel-ads-sdk",
-            "keywords": [
-                "ads",
-                "api",
-                "bing-ads",
-                "facebook-ads",
-                "google-ads"
-            ],
-            "support": {
-                "issues": "https://github.com/tmarois/laravel-ads-sdk/issues",
-                "source": "https://github.com/tmarois/laravel-ads-sdk/tree/v1.5.0"
-            },
-            "time": "2022-04-08T20:44:08+00:00"
         },
         {
             "name": "vlucas/phpdotenv",

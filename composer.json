@@ -7,6 +7,7 @@
     "type": "project",
     "require": {
         "facade/ignition": "^2.3.6",
+        "facebook/php-business-sdk": "^15.0",
         "fideloper/proxy": "^4.0",
         "googleads/google-ads-php": ">=13.0",
         "googleads/googleads-php-lib": "49.0.0",
@@ -15,7 +16,6 @@
         "laravel/framework": "^8.0",
         "laravel/tinker": "^2.0",
         "symfony/http-foundation": "^5.0",
-        "tmarois/laravel-ads-sdk": "^1.5",
         "zadorin/airtable-php": "^0.6.0"
     },
     "require-dev": {
