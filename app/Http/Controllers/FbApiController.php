@@ -34,7 +34,7 @@ class FbApiController extends Controller
         // );
         $account = new AdsPixel($id);
         $fields = array(
-            'code',
+            // 'code',
         );
         
         $params = array(
