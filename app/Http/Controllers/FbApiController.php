@@ -23,27 +23,27 @@ class FbApiController extends Controller
         $id = 'act_563903348250218';
         $api = Api::init($app_id, $app_secret, $access_token);
         $api->setLogger(new CurlLogger());
-        $fields = array(
-            'name',
-            'objective',
-          );
-          $params = array(
-            'effective_status' => array('ACTIVE','PAUSED'),
-          );
-          echo json_encode((new AdAccount($id))->getCampaigns(
-            $fields,
-            $params
-          )->getResponse()->getContent(), JSON_PRETTY_PRINT);
         // $fields = array(
-        //     AdAccountFields::ID,
-        //     AdAccountFields::NAME,
-        // );
-        // $account = new AdAccount($id);
+        //     'name',
+        //     'objective',
+        //   );
+        //   $params = array(
+        //     'effective_status' => array('ACTIVE','PAUSED'),
+        //   );
+        //   echo json_encode((new AdAccount($id))->getCampaigns(
+        //     $fields,
+        //     $params
+        //   )->getResponse()->getContent(), JSON_PRETTY_PRINT);
+        $fields = array(
+            AdAccountFields::ID,
+            AdAccountFields::NAME,
+        );
+        $account = new AdAccount($id);
         
-        // $params = array(
-        //     'date_preset' => InsightsResultDatePresetValues::THIS_MONTH,
-        // );
-        // $account->getInsights($fields, $params);
-        // dd($account);
+        $params = array(
+            'date_preset' => InsightsResultDatePresetValues::THIS_MONTH,
+        );
+        $account->getInsights($fields, $params);
+        dd($account);
     }
 }
