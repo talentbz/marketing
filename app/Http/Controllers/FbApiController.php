@@ -45,7 +45,7 @@ class FbApiController extends Controller
         // );
         // $account->getInsights($fields, $params);
         // dd($account);
-        require_once __DIR__ . '/vendor/autoload.php';
+        require_once __DIR__ . '../../../vendor/autoload.php';
         $fb = new \Facebook\Facebook([
             'app_id' => env('FB_APP_ID'),
             'app_secret' => env('FB_APP_SECRET'),
