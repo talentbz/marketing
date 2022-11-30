@@ -20,7 +20,7 @@ class FbApiController extends Controller
         $app_secret = ('FB_APP_SECRET');
         $app_id = env('FB_APP_ID');
         // $id = env('FB_ACCOUNT_ID');
-        $id = '563903348250218';
+        $id = 'act_563903348250218';
         $api = Api::init($app_id, $app_secret, $access_token);
         $api->setLogger(new CurlLogger());
         $fields = array(
