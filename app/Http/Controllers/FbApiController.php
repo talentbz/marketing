@@ -4,46 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
-// use FacebookAds\Object\AdAccount;
-// use FacebookAds\Object\Fields\AdAccountFields;
-// use FacebookAds\Object\Fields\AdsInsightsFields;
-// use FacebookAds\Object\Campaign;
-// use FacebookAds\Api;
-// use FacebookAds\Logger\CurlLogger;
-// use FacebookAds\Object\Values\InsightsResultDatePresetValues;
+use Exception;
+use Error;
+use Airtable;
 
 class FbApiController extends Controller
 {
     public function getMTD( Request $request){
-        // $access_token = env('FB_ACCESS_TOKEN');
-        // $app_secret = ('FB_APP_SECRET');
-        // $app_id = env('FB_APP_ID');
-        // // $id = env('FB_ACCOUNT_ID');
-        // $id = 'act_563903348250218';
-        // $api = Api::init($app_id, $app_secret, $access_token);
-        // $api->setLogger(new CurlLogger());
-        // // $fields = array(
-        // //     'name',
-        // //     'objective',
-        // //   );
-        // //   $params = array(
-        // //     'effective_status' => array('ACTIVE','PAUSED'),
-        // //   );
-        // //   echo json_encode((new AdAccount($id))->getCampaigns(
-        // //     $fields,
-        // //     $params
-        // //   )->getResponse()->getContent(), JSON_PRETTY_PRINT);
-        // $fields = array(
-        //     AdAccountFields::ID,
-        //     AdAccountFields::NAME,
-        // );
-        // $account = new AdAccount($id);
-        
-        // $params = array(
-        //     'date_preset' => InsightsResultDatePresetValues::THIS_MONTH,
-        // );
-        // $account->getInsights($fields, $params);
-        // dd($account);
         $id_array = [
             '833160470451699',
             '806691966182904',
@@ -63,28 +30,63 @@ class FbApiController extends Controller
         $total_account_arr = array();
         foreach($id_array as $row){
             $individual_acc_arr = array();
-            $individual_acc_arr['Account_ID'] = $row;
+            $individual_acc_arr['FB_Account_ID'] = $row;
             
             // get account data
             $account_url = 'https://graph.facebook.com/v15.0/act_'.$row.'?fields=name&access_token='.$access_token;
             $account_response =Http::get($account_url);
-            $account_name = json_decode($account_response->getBody()->getContents());
-            dd($account_name);
-            $individual_acc_arr['Acount_Name'] = $account_name;
+            $account_name = json_decode($account_response->getBody()->getContents())->name;
+            $individual_acc_arr['Store_Name'] = $account_name;
             
             //get mtd data
             $mtd_url = 'https://graph.facebook.com/v15.0/act_'.$row.'/insights?date_preset='.$date_preset.'&access_token='.$access_token;
             $mtd_response =Http::get($mtd_url);
-            $mtd_data = json_decode($mtd_response->getBody()->getContents()->data[0]->spend);
-            $individual_acc_arr['MTD'] = $mtd_data;
+            $mtd_data = json_decode($mtd_response->getBody()->getContents());
+            $mtd = 0;
+            if($mtd_data->data && $mtd_data->data[0] && $mtd_data->data[0]->spend){
+                $mtd = $mtd_data->data[0]->spend;
+            }
+            $individual_acc_arr['MTD_Cost'] = (float)$mtd;
             array_push($total_account_arr, $individual_acc_arr);
         }
         
+        // Airtable API initialization
+        $apiKey = env("AIRTABLE_KEY");
+        $database = env("AIRTABLE_BASE");
+        $tableName = 'FB_Ads_MTD_Cost';
+        $client = new \Zadorin\Airtable\Client($apiKey, $database);
         
-        dd($total_account_arr);
-        $response = Http::get('https://graph.facebook.com/v15.0/act_563903348250218/insights?access_token=EAAJvxJXuFCwBAJeSk9DzGGTkNBRTV7dABl26IcMhZAxesZCIZBOQ2v0ungPWZCp6IZARDYSdY7VrGna59gn7KiufDbZBKzLdJOvvWN3RlCoWZCQZAIpkhplLfqCcZAyIGfliPL5Cae6b6EZBa03TOhhInWS2cTm7ZCmyhgfnxPHHwFjOLtELeyeneKa');
-        $data = json_decode($response->getBody()->getContents());
-        dd($data);
+        // Remove Old Data
+        $query = $client->table($tableName)
+            ->select('*')
+            ->paginate(100);
+        
+        $total_old_arr = array();
+
+        while ($recordset = $query->nextPage()) {
+            $temp_arr = $recordset->fetchAll();
+            array_push($total_old_arr, ...$temp_arr);
+        }
+
+        try{
+            foreach ($total_old_arr as $toa){
+                $client->delete($toa)->execute();
+                usleep(250000);
+
+            }
+        }
+        catch (Exception $err){
+            $x = "Nothing";
+        }
+        
+        // Insert new data to Airtable
+
+        foreach ($total_account_arr as $taa){
+            $client->table($tableName)
+                    ->insert($taa)
+                    ->execute();
+                    usleep(250000);
+        }
         
     }
 }
