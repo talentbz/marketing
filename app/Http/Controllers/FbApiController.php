@@ -68,7 +68,8 @@ class FbApiController extends Controller
             // get account data
             $account_url = 'https://graph.facebook.com/v15.0/act_'.$row.'?fields=name&access_token='.$access_token;
             $account_response =Http::get($account_url);
-            $account_name = json_decode($account_response->getBody()->getContents()->name);
+            $account_name = json_decode($account_response->getBody()->getContents());
+            dd($account_name);
             $individual_acc_arr['Acount_Name'] = $account_name;
             
             //get mtd data
