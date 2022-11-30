@@ -3,14 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
-// use FacebookAds\Object\AdAccount;
-// use FacebookAds\Object\Fields\AdAccountFields;
-// use FacebookAds\Object\Fields\AdsInsightsFields;
-// use FacebookAds\Object\Campaign;
-// use FacebookAds\Api;
-// use FacebookAds\Logger\CurlLogger;
-// use FacebookAds\Object\Values\InsightsResultDatePresetValues;
+use FacebookAds\Object\AdAccount;
+use FacebookAds\Object\Fields\AdAccountFields;
+use FacebookAds\Object\Fields\AdsInsightsFields;
+use FacebookAds\Object\Campaign;
+use FacebookAds\Api;
+use FacebookAds\Logger\CurlLogger;
+use FacebookAds\Object\Values\InsightsResultDatePresetValues;
 
 
 class FbApiController extends Controller
