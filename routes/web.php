@@ -52,3 +52,8 @@ Route::get(
     'FbApiController@getMTD'
 );
 
+Route::get(
+    'get_klaviyo',
+    'KlApiController@getMTD'
+);
+
