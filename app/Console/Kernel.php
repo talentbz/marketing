@@ -24,8 +24,10 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+
+        // google ads MTD schedule
+        $schedule->call('App\Http\Controllers\GoogleAdsApiController@getMTD')->everyMinute();
+
     }
 
     /**
