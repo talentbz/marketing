@@ -28,6 +28,9 @@ class Kernel extends ConsoleKernel
         // google ads MTD schedule
         $schedule->call('App\Http\Controllers\GoogleAdsApiController@getMTD')->hourly();
 
+        // google klaviyo stats
+        $schedule->call('App\Http\Controllers\KlApiController@getMTD')->hourly();
+
     }
 
     /**
