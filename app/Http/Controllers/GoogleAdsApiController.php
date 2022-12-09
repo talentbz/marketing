@@ -341,7 +341,7 @@ class GoogleAdsApiController extends Controller
     }
 
     public function getMTD( Request $request, GoogleAdsClient $googleAdsClient){
-        $manageId = env("MANAGE_ID");
+        $manageId = env("GA_MANAGE_ID");
         $customerIdList = 'SELECT customer_client.id, customer_client.descriptive_name, customer_client.currency_code FROM customer_client WHERE customer_client.manager != TRUE AND customer_client.test_account != TRUE AND customer_client.hidden != TRUE';
         $customerIdResponse = $googleAdsClient->getGoogleAdsServiceClient()->search(
             $manageId,
