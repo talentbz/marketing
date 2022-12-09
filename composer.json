@@ -18,6 +18,8 @@
         "laravel/framework": "^8.0",
         "laravel/tinker": "^2.0",
         "symfony/http-foundation": "^5.0",
+        "vluzrmos/slack-api": "^0.5.5",
+        "wrapi/slack": "*",
         "zadorin/airtable-php": "^0.6.0"
     },
     "require-dev": {
