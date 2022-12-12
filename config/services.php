@@ -34,7 +34,7 @@ return [
         'secret' => env('SPARKPOST_SECRET'),
     ],
     'slack' => [
-        // 'token' => 'xoxb-516892851634-4220100477509-W3Y0fUOKBwEPdl90QQcC5LP5'
+        'token' => 'xoxb-516892851634-4220100477509-W3Y0fUOKBwEPdl90QQcC5LP5'
     ],
 
 ];
