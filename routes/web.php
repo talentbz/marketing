@@ -57,3 +57,7 @@ Route::get(
     'KlApiController@getMTD'
 );
 
+Route::get(
+    'get_tt',
+    "TikController@getMTDCost"
+);
