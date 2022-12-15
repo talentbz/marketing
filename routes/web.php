@@ -58,6 +58,11 @@ Route::get(
 );
 
 Route::get(
-    'get_tt',
+    'get_auth_code',
+    "TikController@getAuthCode"
+);
+
+Route::get(
+    'get_tt_cost',
     "TikController@getMTDCost"
 );
