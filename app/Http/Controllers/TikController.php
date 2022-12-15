@@ -16,7 +16,7 @@ class TikController extends Controller
         // for now, all keys are hard coded, these must be stored in DB and also if a new app is required it should be
         // got from GUI
         $app_id = "7176805706610245634";
-        $app_secret = "814d7c9032f9de90b5cc7c4f7b6d4e264ed16d6a";
+        $app_secret = "26635d237c70e92298e7941d9799aa2559071309";
         
         // This should generate consent screen for accepting allowed roles for this app
         $response = $client->request('GET', $advertiser_auth_url, [
@@ -93,7 +93,7 @@ class TikController extends Controller
         // for now, all keys are hard coded, these must be stored in DB and also if a new app is required it should be
         // got from GUI
         $app_id = "7176805706610245634";
-        $app_secret = "814d7c9032f9de90b5cc7c4f7b6d4e264ed16d6a";
+        $app_secret = "26635d237c70e92298e7941d9799aa2559071309";
         $access_token = "814d7c9032f9de90b5cc7c4f7b6d4e264ed16d6a";
 
         // --------------------------------------------------------------------------------------------
@@ -128,10 +128,18 @@ class TikController extends Controller
         */
         $temp_resp = $response->getBody()->getContents();
         $temp_resp = json_decode($temp_resp);
-        $total_revenue = $temp_resp->data->list;
+
+        $advertiser_ids_names = $temp_resp->data->list;
+        
+        $advertiser_name_id_array = array();
+
+        foreach ($advertiser_ids_names as $adin){
+            $advertiser_name_id_array[$adin->advertiser_name] = $adin->advertiser_id;
+        }
 
 
         // --------------------------------------------------------------------------------------------
         // Then Run a synchronous report for individaul accounts and sumup by account
+        
     }
 }

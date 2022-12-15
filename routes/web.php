@@ -58,7 +58,7 @@ Route::get(
 );
 
 Route::get(
-    'get_auth_code',
+    'get_tt_auth_code',
     "TikController@getAuthCode"
 );
 
