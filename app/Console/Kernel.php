@@ -31,6 +31,9 @@ class Kernel extends ConsoleKernel
         // google klaviyo stats
         $schedule->call('App\Http\Controllers\KlApiController@getMTD')->hourly();
 
+        // Tiktok stats
+        $schedule->call('App\Http\Controllers\TikController@getMTDCost')->hourly();
+
     }
 
     /**
