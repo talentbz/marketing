@@ -12,7 +12,7 @@ class FbApiController extends Controller
 {
     public function getMTD( Request $request){
 
-        $fb_adset_id = ['23850731868090128', '23850655255080128', '23849913401510128', '23849913380050128', '23851504615440128', '23850242959190128', '23849866750040128', '23849866626560128'];
+        $fb_adset_id = ['23849866626640128'];
         $total_rev = 0;
         foreach ( $fb_adset_id as $row){
             $get_hyros_data = Http::withHeaders([
@@ -23,7 +23,7 @@ class FbApiController extends Controller
                 "startDate" => '2022-12-01',
                 "endDate" => '2022-12-19',
                 'currency' => 'user_currency',
-                "level" => 'facebook_adset',
+                "level" => 'facebook_ad',
                 "fields" => 'revenue, sales, total_revenue',
                 "ids" => $row,
                 "dayOfAttribution" => false,
