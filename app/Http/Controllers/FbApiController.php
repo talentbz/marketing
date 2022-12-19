@@ -11,6 +11,30 @@ use Airtable;
 class FbApiController extends Controller
 {
     public function getMTD( Request $request){
+
+        $fb_adset_id = ['23850731868090128', '23850655255080128', '23849913401510128', '23849913380050128', '23851504615440128', '23850242959190128', '23849866750040128', '23849866626560128'];
+        $total_rev = 0;
+        foreach ( $fb_adset_id as $row){
+            $get_hyros_data = Http::withHeaders([
+                'Content-Type' => 'application/json',
+                'API-Key' => '3d1cb41817d5eaf00a6479a312af70e68893f1700c4aa3501a279a1b40326096', 
+            ])->get('https://api.hyros.com/v1/api/v1.0/attribution', [
+                "attributionModel" => 'last_click',
+                "startDate" => '2022-12-01',
+                "endDate" => '2022-12-19',
+                'currency' => 'user_currency',
+                "level" => 'facebook_adset',
+                "fields" => 'revenue, sales, total_revenue',
+                "ids" => $row,
+                "dayOfAttribution" => false,
+            ]);
+            if($get_hyros_data->getStatusCode() == 200){
+                $data = json_decode($get_hyros_data->getBody()->getContents());
+                // dd($data->result[0]->revenue);
+                $total_rev += $data->result[0]->revenue;
+            }
+        }
+        dd($total_rev);
         $id_array = [
             '833160470451699',
             '806691966182904',
