@@ -26,16 +26,16 @@ class Kernel extends ConsoleKernel
     {
 
         // google ads MTD schedule
-        $schedule->call('App\Http\Controllers\GoogleAdsApiController@getMTD')->hourly();
+        $schedule->call('App\Http\Controllers\GoogleAdsApiController@getMTD')->everyThirtyMinutes()->timezone('America/New_York');
 
         // google klaviyo stats
-        $schedule->call('App\Http\Controllers\KlApiController@getMTD')->hourly();
+        $schedule->call('App\Http\Controllers\KlApiController@getMTD')->dailyAt('8:50')->timezone('America/New_York');
 
         // Tiktok stats
-        $schedule->call('App\Http\Controllers\TikController@getMTDCost')->hourly();
+        $schedule->call('App\Http\Controllers\TikController@getMTDCost')->everyThirtyMinutes()->timezone('America/New_York');
 
         // fb stats
-        $schedule->call('App\Http\Controllers\FbApiController@getMTD')->hourly();
+        $schedule->call('App\Http\Controllers\FbApiController@getMTD')->everyThirtyMinutes()->timezone('America/New_York');
 
     }
 
