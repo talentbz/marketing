@@ -11,6 +11,9 @@ use Airtable;
 class FbApiController extends Controller
 {
     public function getMTD( Request $request){
+
+        //get long live token (60days)
+        // /oauth/access_token?grant_type=fb_exchange_token&client_id=476479751350446&client_secret=2593d72ef87d466f2910b8ddfc4866d5&fb_exchange_token=EAAGxWxZASaK4BAHXaaR7MRVesEayjoqfQkY56KeTsOrN9PL67RNiPqExbth2BpiHDiz1bJDVnd05OZCgpCqfbKTcfmgycVbb2ZCJM70xLZC59ZAtiBW1cvzE4el1y0PZCmYZBDbUE9RYdFzRqtMEPglh0YzBVBNABJiqAmYsWkLKETBiRf1VwRYKZBRioH8Ebqc767pcQOOaPC03myjYdNlO8CRGIFGk0l8ZD
         $id_array = [
           // '833160470451699',
           '806691966182904',
@@ -39,7 +42,7 @@ class FbApiController extends Controller
           // get account data
           $account_url = 'https://graph.facebook.com/v15.0/act_'.$row.'?fields=name&access_token='.$access_token;
           $account_response =Http::get($account_url);
-          dd($account_name = json_decode($account_response->getBody()->getContents()));
+          
           $account_name = json_decode($account_response->getBody()->getContents())->name;
           $individual_acc_arr['Store_Name'] = $account_name;
           
