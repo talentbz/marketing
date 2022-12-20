@@ -68,6 +68,7 @@ class FbApiController extends Controller
             $mtd_response =Http::get($mtd_url);
             $mtd_data = json_decode($mtd_response->getBody()->getContents());
             $mtd = 0;
+            dd($mtd_data->data);
             if($mtd_data->data && $mtd_data->data[0] && $mtd_data->data[0]->spend){
                 $mtd = $mtd_data->data[0]->spend;
             }
