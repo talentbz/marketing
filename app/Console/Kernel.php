@@ -34,6 +34,9 @@ class Kernel extends ConsoleKernel
         // Tiktok stats
         $schedule->call('App\Http\Controllers\TikController@getMTDCost')->hourly();
 
+        // fb stats
+        $schedule->call('App\Http\Controllers\FbApiController@getMTD')->hourly();
+
     }
 
     /**
