@@ -11,10 +11,10 @@ use Airtable;
 class FbApiController extends Controller
 {
     public function getMTD( Request $request){
-        echo 'First Date    = ' . date('2022-02-01') . '<br />';
+        // echo 'First Date    = ' . date('2022-02-01') . '<br />';
         $first_day = date('2022-02-01');
-        echo 'Last Date     = ' . date('2022-02-t', strtotime($first_day))  . '<br />';
-        dd(1);
+        // echo 'Last Date     = ' . date('2022-02-t', strtotime($first_day))  . '<br />';
+        // dd(1);
         $id_array = [
           // '833160470451699',
           '806691966182904',
