@@ -102,8 +102,8 @@ class FbApiController extends Controller
                           'API-Key' => $fb_hyros_row['api_key'], 
                       ])->get('https://api.hyros.com/v1/api/v1.0/attribution', [
                           "attributionModel" => 'last_click',
-                          "startDate" => $this_year.'-'.$this_month.'-01',
-                          "endDate" => $this_year.'-'.$this_month.'-'.$today,
+                          "startDate" => $this_year.'-'.$current_month.'-01',
+                          "endDate" => $this_year.'-'.$current_month.'-'.$today,
                           'currency' => 'user_currency',
                           "level" => 'facebook_adset',
                           "fields" => 'revenue, sales, total_revenue',
