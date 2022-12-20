@@ -63,7 +63,7 @@ class FbApiController extends Controller
                 $month_str = (string)$i;
             }
             $date_start = $this_year.'-'.$month_str.'-'.'01';
-            $date_stop = date($this_year.'-'.$month_str.'-t', strtotime($first_day));
+            $date_stop = date($this_year.'-'.$month_str.'-t', strtotime($date_start));
             $mtd_url = 'https://graph.facebook.com/v15.0/act_'.$row.'/insights?date_start='.$date_start.'&date_stop='.$date_stop.'&access_token='.$access_token;
             $mtd_response =Http::get($mtd_url);
             $mtd_data = json_decode($mtd_response->getBody()->getContents());
