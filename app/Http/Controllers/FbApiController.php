@@ -27,7 +27,7 @@ class FbApiController extends Controller
       ];
       $access_token = env('FB_ACCESS_TOKEN');
       $total_account_arr = array();
-      $this_year = date('y');
+      $this_year = date('Y');
       $current_month = date('m');
       $today = date('d');
       $month_name_arr = ["nothing", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
