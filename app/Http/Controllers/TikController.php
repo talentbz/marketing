@@ -178,6 +178,25 @@ class TikController extends Controller
         $month_name_array = ['dummy','January','February','March','April','May','June','July','August','September','October','November','December'];
 
         foreach ($advertiser_name_id_array as $ader_name => $ader_id) {
+
+
+            // get adgroup_id =============================================================================
+            $response = $client->request('GET', "https://business-api.tiktok.com/open_api/v1.2/adgroup/get/?advertiser_id=".$ader_id."&page_size=1000", [
+                'headers' => [
+                    'accept' => 'application/json',
+                    'Access-Token' => $access_token
+                ],
+            ]);
+            $temp_resp = $response->getBody()->getContents();
+            $temp_resp = json_decode($temp_resp);
+            $adgroup_data = $temp_resp->data->list;
+
+            $adgroup_id_arr = array();
+            foreach ($adgroup_data as $agd){
+                array_push($adgroup_id_arr, $agd->adgroup_id);
+            }
+            dd($adgroup_id_arr);
+            // ============================================================================================
             $temp_ader_array = [
                 'AccountName' => str_replace(' ', '', $ader_name),
                 'AccountID' => (string)$ader_id,
