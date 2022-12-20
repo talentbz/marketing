@@ -29,7 +29,7 @@ class Kernel extends ConsoleKernel
         $schedule->call('App\Http\Controllers\GoogleAdsApiController@getMTD')->everyThirtyMinutes()->timezone('America/New_York');
 
         // google klaviyo stats
-        $schedule->call('App\Http\Controllers\KlApiController@getMTD')->timezone('America/New_York')->at('8:50');
+        $schedule->call('App\Http\Controllers\KlApiController@getMTD')->dailyAt('8:50')->timezone('America/New_York');
 
         // Tiktok stats
         $schedule->call('App\Http\Controllers\TikController@getMTDCost')->everyThirtyMinutes()->timezone('America/New_York');
