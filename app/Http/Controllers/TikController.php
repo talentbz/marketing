@@ -96,7 +96,7 @@ class TikController extends Controller
         // got from GUI
         $app_id = "7176805706610245634";
         $app_secret = "26635d237c70e92298e7941d9799aa2559071309";
-        $access_token = "814d7c9032f9de90b5cc7c4f7b6d4e264ed16d6a";
+        $access_token = "7098ae8b9e43050d0cccf3596f179da2551483af";
 
         // --------------------------------------------------------------------------------------------
         // Fisrt of all get the complete list of advertiser account names from $advertiser_ids array
