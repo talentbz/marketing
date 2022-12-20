@@ -122,7 +122,6 @@ class FbApiController extends Controller
           }
           array_push($total_account_arr, $individual_acc_arr);
       }
-      dd($total_account_arr);
       // Airtable API initialization
       $apiKey = env("AIRTABLE_KEY");
       $database = env("AIRTABLE_BASE");
