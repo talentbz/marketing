@@ -275,12 +275,14 @@ class KlApiController extends Controller
                 $mom_change_revenue = 0;
             }else{
                 $mom_change_revenue = ($total_klaviyo_revenue - $last_same_period_klaviyo_revenue) / $last_same_period_klaviyo_revenue * 100;
+                $mom_change_revenue = round($mom_change_revenue, 2);
             }
 
             if((int)$last_same_period_klaviyo_orders == 0){
                 $mom_change_orders = 0;
             }else{
                 $mom_change_orders = ($total_klaviyo_orders - $last_same_period_klaviyo_orders) / $last_same_period_klaviyo_orders * 100;
+                $mom_change_orders = round($mom_change_orders, 2);
             }
 
             $row = array();
