@@ -394,6 +394,7 @@ class GoogleAdsApiController extends Controller
             ['name' => 'TheKittySack', 'email'=>'thekittysack@gmail.com', 'api_key'=>''],
             ['name' => 'USProDevices', 'email'=>'zac@zrichmedia.com', 'api_key'=>''],
             ['name' => 'ZRichMedia', 'email'=>'zac@zrichmedia.com', 'api_key'=>''],
+            ['name' => 'MyNoogin', 'email'=>'hello@mynoogin.com', 'account_id'=>'4931070221', 'api_key'=>'47b023c6cd95721dda8aa60a4d86ecb28cc1cea1ed732cb7e59073bc4ff82886'],
         ];
         foreach ($customerIdResponse->iterateAllElements() as $row){
             
