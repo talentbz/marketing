@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Airtable;
+use Illuminate\Support\Facades\Http;
 
 class TikController extends Controller
 {
@@ -88,7 +89,7 @@ class TikController extends Controller
 
 
 
-    public function getMTDCost(){
+    public function getMTD(){
 
         $client = new \GuzzleHttp\Client();
 
@@ -176,27 +177,22 @@ class TikController extends Controller
         $max_day_array = ['0','31','28','31','30','31','30','31','31','30','31','30','31'];
         $month_char_array = ['dummy','01','02','03','04','05','06','07','08','09','10','11','12'];
         $month_name_array = ['dummy','January','February','March','April','May','June','July','August','September','October','November','December'];
+        
+        $tt_hyros = [
+            ['name' => 'Wiht A. Riollano','account_id'=>'7057883608681349122', 'email'=>'boomspeakershop@gmail.com', 'api_key'=>'0f1b21056022bce9fba3a54d9c4c7c2a6ea753e703a6247acba37f45068301a5'],
+            ['name' => 'Delta Hikers', 'account_id'=>'7176340424892645377', 'email'=>'deltahikers@gmail.com', 'api_key'=>'7ab732e3e3652e4c8fa7569413b81cfc39600dbb04fb769002c4f66cbe3b8eeb'],
+            ['name' => 'Ryan Stenn', 'account_id'=>'7138528834256699393', 'email'=>'thenessanity@gmail.com', 'api_key'=>'bd45fe8bf8aab345390f5842e245c4e1dcefe1fab31789e39df37b052a8270c2'],
+            ['name' => 'Delta Hikers', 'account_id'=>'7170743223772626945', 'email'=>'deltahikers@gmail.com', 'api_key'=>'7ab732e3e3652e4c8fa7569413b81cfc39600dbb04fb769002c4f66cbe3b8eeb'],
+            ['name' => 'Ryan Stenn', 'account_id'=>'7170008149435383809', 'email'=>'thenessanity@gmail.com', 'api_key'=>'bd45fe8bf8aab345390f5842e245c4e1dcefe1fab31789e39df37b052a8270c2'],              
+
+        ];
+
+        $tt_hyros_integrated_id_key_arr = array();
+        foreach ($tt_hyros as $tth){
+            $tt_hyros_integrated_id_key_arr[(string)$tth['account_id']] = (string)$tth['api_key'];
+        }
 
         foreach ($advertiser_name_id_array as $ader_name => $ader_id) {
-
-
-            // get adgroup_id =============================================================================
-            $response = $client->request('GET', "https://business-api.tiktok.com/open_api/v1.2/adgroup/get/?advertiser_id=".$ader_id."&page_size=1000", [
-                'headers' => [
-                    'accept' => 'application/json',
-                    'Access-Token' => $access_token
-                ],
-            ]);
-            $temp_resp = $response->getBody()->getContents();
-            $temp_resp = json_decode($temp_resp);
-            $adgroup_data = $temp_resp->data->list;
-
-            $adgroup_id_arr = array();
-            foreach ($adgroup_data as $agd){
-                array_push($adgroup_id_arr, $agd->adgroup_id);
-            }
-            dd($adgroup_id_arr);
-            // ============================================================================================
             $temp_ader_array = [
                 'AccountName' => str_replace(' ', '', $ader_name),
                 'AccountID' => (string)$ader_id,
@@ -218,6 +214,53 @@ class TikController extends Controller
                 'December' => 0.00
             ];
             $ytd_cost = 0.00;
+            
+
+
+            if (array_key_exists($ader_id, $tt_hyros_integrated_id_key_arr)){
+                // get adgroup_id =============================================================================
+                $response = $client->request('GET', "https://business-api.tiktok.com/open_api/v1.2/adgroup/get/?advertiser_id=".$ader_id."&page_size=1000", [
+                    'headers' => [
+                        'accept' => 'application/json',
+                        'Access-Token' => $access_token
+                    ],
+                ]);
+                $temp_resp = $response->getBody()->getContents();
+                $temp_resp = json_decode($temp_resp);
+                $adgroup_data = $temp_resp->data->list;
+
+                $adgroup_id_arr = array();
+                foreach ($adgroup_data as $agd){
+                    array_push($adgroup_id_arr, $agd->adgroup_id);
+                }
+                // ============================================================================================
+                $total_rev = 0;
+
+                foreach($adgroup_id_arr as $aia){
+                    $get_hyros_data = Http::withHeaders([
+                        'Content-Type' => 'application/json',
+                        'API-Key' => $tt_hyros_integrated_id_key_arr[$ader_id], 
+                    ])->get('https://api.hyros.com/v1/api/v1.0/attribution', [
+                        "attributionModel" => 'last_click',
+                        "startDate" => $year.'-'.$month.'-01',
+                        "endDate" => $year.'-'.$month.'-'.$day,
+                        'currency' => 'user_currency',
+                        "level" => 'tiktok_adgroup',
+                        "fields" => 'revenue, sales, total_revenue',
+                        "ids" => $aia,
+                        "dayOfAttribution" => false,
+                    ]);
+                    if($get_hyros_data->getStatusCode() == 200){
+                        $data = json_decode($get_hyros_data->getBody()->getContents());
+                        // dd($data->result[0]->revenue);
+                        $total_rev += $data->result[0]->revenue;
+                    }
+                }
+
+                $temp_ader_array['MTDSales'] = $total_rev;
+            }
+
+
             for ($j=1; $j <= (int)$month; $j++){
                 $mdt_cost = 0.00;
                 $currency = 'USD';
@@ -314,6 +357,9 @@ class TikController extends Controller
             }
             $temp_ader_array['YTDCost'] = (float)$ytd_cost;
             array_push($total_cost_array, $temp_ader_array);
+
+
+
         }
 
         // Now feed to airtable
@@ -350,5 +396,6 @@ class TikController extends Controller
                 ->insert($tca)
                 ->execute();
         }
+        // tiktok_adgroup
     }
 }

@@ -37,6 +37,9 @@ class Kernel extends ConsoleKernel
         // fb stats
         $schedule->call('App\Http\Controllers\FbApiController@getMTD')->everyThirtyMinutes()->timezone('America/New_York');
 
+        //TT stats
+        $schedule->call('App\Http\Controllers\TikController@getMTD')->everyThirtyMinutes()->timezone('America/New_York');
+
     }
 
     /**

@@ -63,6 +63,6 @@ Route::get(
 );
 
 Route::get(
-    'get_tt_cost',
-    "TikController@getMTDCost"
+    'get_tt',
+    "TikController@getMTD"
 );

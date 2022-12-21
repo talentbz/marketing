@@ -11,10 +11,6 @@ use Airtable;
 class FbApiController extends Controller
 {
     public function getMTD( Request $request){
-        // echo 'First Date    = ' . date('2022-02-01') . '<br />';
-        $first_day = date('2022-02-01');
-        // echo 'Last Date     = ' . date('2022-02-t', strtotime($first_day))  . '<br />';
-        // dd(1);
         $id_array = [
           // '833160470451699',
           '806691966182904',
@@ -67,7 +63,7 @@ class FbApiController extends Controller
                 $month_str = (string)$i;
             }
             $date_start = $this_year.'-'.$month_str.'-'.'01';
-            $date_stop = date($this_year.'-'.$month_str.'-t', strtotime($first_day));
+            $date_stop = date($this_year.'-'.$month_str.'-t', strtotime($date_start));
             $mtd_url = 'https://graph.facebook.com/v15.0/act_'.$row.'/insights?date_start='.$date_start.'&date_stop='.$date_stop.'&access_token='.$access_token;
             $mtd_response =Http::get($mtd_url);
             $mtd_data = json_decode($mtd_response->getBody()->getContents());
@@ -106,8 +102,8 @@ class FbApiController extends Controller
                           'API-Key' => $fb_hyros_row['api_key'], 
                       ])->get('https://api.hyros.com/v1/api/v1.0/attribution', [
                           "attributionModel" => 'last_click',
-                          "startDate" => $this_year.'-'.$this_month.'-01',
-                          "endDate" => $this_year.'-'.$this_month.'-'.$today,
+                          "startDate" => $this_year.'-'.$current_month.'-01',
+                          "endDate" => $this_year.'-'.$current_month.'-'.$today,
                           'currency' => 'user_currency',
                           "level" => 'facebook_adset',
                           "fields" => 'revenue, sales, total_revenue',
@@ -126,7 +122,6 @@ class FbApiController extends Controller
           }
           array_push($total_account_arr, $individual_acc_arr);
       }
-      dd($total_account_arr);
       // Airtable API initialization
       $apiKey = env("AIRTABLE_KEY");
       $database = env("AIRTABLE_BASE");
