@@ -26,7 +26,7 @@ class Kernel extends ConsoleKernel
     {
 
         // google ads MTD schedule
-        $schedule->call('App\Http\Controllers\GoogleAdsApiController@getMTD')->everyThirtyMinutes()->timezone('America/New_York');
+        $schedule->call('App\Http\Controllers\GoogleAdsApiController@getMTD')->hourly()->timezone('America/New_York');
 
         // google klaviyo stats
         $schedule->call('App\Http\Controllers\KlApiController@getMTD')->dailyAt('8:50')->timezone('America/New_York');
