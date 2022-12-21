@@ -27,7 +27,7 @@ class FbApiController extends Controller
       ];
       $access_token = env('FB_ACCESS_TOKEN');
       $total_account_arr = array();
-      $this_year = date('y');
+      $this_year = date('Y');
       $current_month = date('m');
       $today = date('d');
       $month_name_arr = ["nothing", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -64,7 +64,7 @@ class FbApiController extends Controller
             }
             $date_start = $this_year.'-'.$month_str.'-'.'01';
             $date_stop = date($this_year.'-'.$month_str.'-t', strtotime($date_start));
-            $mtd_url = 'https://graph.facebook.com/v15.0/act_'.$row.'/insights?date_start='.$date_start.'&date_stop='.$date_stop.'&access_token='.$access_token;
+            $mtd_url = 'https://graph.facebook.com/v15.0/act_'.$row.'/insights?time_range[since]='.$date_start.'&time_range[until]='.$date_stop.'&access_token='.$access_token;
             $mtd_response =Http::get($mtd_url);
             $mtd_data = json_decode($mtd_response->getBody()->getContents());
             $mtd = 0;
