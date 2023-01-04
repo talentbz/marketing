@@ -436,7 +436,7 @@ class GoogleAdsApiController extends Controller
                     $month_str = (string)$i;
                 }
                 
-                $query_template = "SELECT metrics.cost_micros FROM customer WHERE segments.month = '2022-".$month_str."-01'";
+                $query_template = "SELECT metrics.cost_micros FROM customer WHERE segments.month = '2023-".$month_str."-01'";
 
                 try {
                     $response = $googleAdsClient->getGoogleAdsServiceClient()->search(
@@ -482,8 +482,8 @@ class GoogleAdsApiController extends Controller
                             'API-Key' => $api_row['api_key'], 
                         ])->get('https://api.hyros.com/v1/api/v1.0/attribution', [
                             "attributionModel" => 'last_click',
-                            "startDate" => '2022-'.$current_month_zero.'-01',
-                            "endDate" => '2022-'.$current_month_zero.'-'.$current_date_zero,
+                            "startDate" => '2023-'.$current_month_zero.'-01',
+                            "endDate" => '2023-'.$current_month_zero.'-'.$current_date_zero,
                             'currency' => 'user_currency',
                             "level" => 'google_campaign',
                             "fields" => 'revenue, sales, total_revenue',
