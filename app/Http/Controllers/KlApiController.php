@@ -20,7 +20,7 @@ class KlApiController extends Controller
     //get MTD revenue
     public function getMTD(){
 
-        $channel = '#omnisendstats';
+        $channel = '#emailmarketingstats';
 
         $apiKey = "keyuhRHvjVg7hfPSe";
         $database = "appLp38C203S7B4e5";
@@ -152,36 +152,40 @@ class KlApiController extends Controller
             // Klaviyo campaign part start (Last month)
             // get klaviyo campaign revenue
             $last_month_campaign_revenue = 0;
-            foreach ($campaign_ids as $camp_id){
-                $response = $client->request('GET', 'https://a.klaviyo.com/api/v1/metric/'.$placed_order_metric_id.'/export?unit=day&measurement=value&where=%5B%5B%22%24attributed_message%22%2C%22%3D%22%2C%22'.$camp_id.'%22%5D%5D&start_date='.$year.'-'.$last_month.'-01&end_date='.$year.'-'.$last_month.'-'.$day.'&api_key='.$api_key, [
-                    'headers' => [
-                    'accept' => 'application/json',
-                    ],
-                ]);
-                $temp_resp = $response->getBody()->getContents();
-                $temp_resp = json_decode($temp_resp);
-                $temp_campaign_revenue = 0;
-                foreach ($temp_resp->results[0]->data as $data){
-                    $temp_campaign_revenue += (float)($data->values[0]);
+            if($last_month != "00"){
+                foreach ($campaign_ids as $camp_id){
+                    $response = $client->request('GET', 'https://a.klaviyo.com/api/v1/metric/'.$placed_order_metric_id.'/export?unit=day&measurement=value&where=%5B%5B%22%24attributed_message%22%2C%22%3D%22%2C%22'.$camp_id.'%22%5D%5D&start_date='.$year.'-'.$last_month.'-01&end_date='.$year.'-'.$last_month.'-'.$day.'&api_key='.$api_key, [
+                        'headers' => [
+                        'accept' => 'application/json',
+                        ],
+                    ]);
+                    $temp_resp = $response->getBody()->getContents();
+                    $temp_resp = json_decode($temp_resp);
+                    $temp_campaign_revenue = 0;
+                    foreach ($temp_resp->results[0]->data as $data){
+                        $temp_campaign_revenue += (float)($data->values[0]);
+                    }
+                    $last_month_campaign_revenue += (float)$temp_campaign_revenue;
                 }
-                $last_month_campaign_revenue += (float)$temp_campaign_revenue;
             }
 
             // get klaviyo campaign orders
             $last_month_campaign_orders = 0;
-            foreach ($campaign_ids as $camp_id){
-                $response = $client->request('GET', 'https://a.klaviyo.com/api/v1/metric/'.$placed_order_metric_id.'/export?unit=day&measurement=count&where=%5B%5B%22%24attributed_message%22%2C%22%3D%22%2C%22'.$camp_id.'%22%5D%5D&start_date='.$year.'-'.$last_month.'-01&end_date='.$year.'-'.$last_month.'-'.$day.'&api_key='.$api_key, [
-                    'headers' => [
-                    'accept' => 'application/json',
-                    ],
-                ]);
-                $temp_resp = $response->getBody()->getContents();
-                $temp_resp = json_decode($temp_resp);
-                $temp_campaign_orders = 0;
-                foreach ($temp_resp->results[0]->data as $data){
-                    $temp_campaign_orders += (float)($data->values[0]);
+            if($last_month != "00"){
+                foreach ($campaign_ids as $camp_id){
+                    $response = $client->request('GET', 'https://a.klaviyo.com/api/v1/metric/'.$placed_order_metric_id.'/export?unit=day&measurement=count&where=%5B%5B%22%24attributed_message%22%2C%22%3D%22%2C%22'.$camp_id.'%22%5D%5D&start_date='.$year.'-'.$last_month.'-01&end_date='.$year.'-'.$last_month.'-'.$day.'&api_key='.$api_key, [
+                        'headers' => [
+                        'accept' => 'application/json',
+                        ],
+                    ]);
+                    $temp_resp = $response->getBody()->getContents();
+                    $temp_resp = json_decode($temp_resp);
+                    $temp_campaign_orders = 0;
+                    foreach ($temp_resp->results[0]->data as $data){
+                        $temp_campaign_orders += (float)($data->values[0]);
+                    }
+                    $last_month_campaign_orders += (float)$temp_campaign_orders;
                 }
-                $last_month_campaign_orders += (float)$temp_campaign_orders;
             }
 
             // ===================================================================
@@ -231,36 +235,40 @@ class KlApiController extends Controller
             
             // get klaviyo flow revenue
             $last_month_flow_revenue = 0;
-            foreach ($flow_ids as $flow_id){
-                $response = $client->request('GET', 'https://a.klaviyo.com/api/v1/metric/'.$placed_order_metric_id.'/export?unit=day&measurement=value&where=%5B%5B%22%24attributed_flow%22%2C%22%3D%22%2C%22'.$flow_id.'%22%5D%5D&start_date='.$year.'-'.$last_month.'-01&end_date='.$year.'-'.$last_month.'-'.$day.'&api_key='.$api_key, [
-                    'headers' => [
-                    'accept' => 'application/json',
-                    ],
-                ]);
-                $temp_resp = $response->getBody()->getContents();
-                $temp_resp = json_decode($temp_resp);
-                $temp_flow_revenue = 0;
-                foreach ($temp_resp->results[0]->data as $data){
-                    $temp_flow_revenue += (float)($data->values[0]);
+            if($last_month != "00"){
+                foreach ($flow_ids as $flow_id){
+                    $response = $client->request('GET', 'https://a.klaviyo.com/api/v1/metric/'.$placed_order_metric_id.'/export?unit=day&measurement=value&where=%5B%5B%22%24attributed_flow%22%2C%22%3D%22%2C%22'.$flow_id.'%22%5D%5D&start_date='.$year.'-'.$last_month.'-01&end_date='.$year.'-'.$last_month.'-'.$day.'&api_key='.$api_key, [
+                        'headers' => [
+                        'accept' => 'application/json',
+                        ],
+                    ]);
+                    $temp_resp = $response->getBody()->getContents();
+                    $temp_resp = json_decode($temp_resp);
+                    $temp_flow_revenue = 0;
+                    foreach ($temp_resp->results[0]->data as $data){
+                        $temp_flow_revenue += (float)($data->values[0]);
+                    }
+                    $last_month_flow_revenue += (float)$temp_flow_revenue;
                 }
-                $last_month_flow_revenue += (float)$temp_flow_revenue;
             }
 
             // get klaviyo flow orders
             $last_month_flow_orders = 0;
-            foreach ($flow_ids as $flow_id){
-                $response = $client->request('GET', 'https://a.klaviyo.com/api/v1/metric/'.$placed_order_metric_id.'/export?unit=day&measurement=count&where=%5B%5B%22%24attributed_flow%22%2C%22%3D%22%2C%22'.$flow_id.'%22%5D%5D&start_date='.$year.'-'.$last_month.'-01&end_date='.$year.'-'.$last_month.'-'.$day.'&api_key='.$api_key, [
-                    'headers' => [
-                    'accept' => 'application/json',
-                    ],
-                ]);
-                $temp_resp = $response->getBody()->getContents();
-                $temp_resp = json_decode($temp_resp);
-                $temp_flow_orders = 0;
-                foreach ($temp_resp->results[0]->data as $data){
-                    $temp_flow_orders += (float)($data->values[0]);
+            if($last_month != "00"){
+                foreach ($flow_ids as $flow_id){
+                    $response = $client->request('GET', 'https://a.klaviyo.com/api/v1/metric/'.$placed_order_metric_id.'/export?unit=day&measurement=count&where=%5B%5B%22%24attributed_flow%22%2C%22%3D%22%2C%22'.$flow_id.'%22%5D%5D&start_date='.$year.'-'.$last_month.'-01&end_date='.$year.'-'.$last_month.'-'.$day.'&api_key='.$api_key, [
+                        'headers' => [
+                        'accept' => 'application/json',
+                        ],
+                    ]);
+                    $temp_resp = $response->getBody()->getContents();
+                    $temp_resp = json_decode($temp_resp);
+                    $temp_flow_orders = 0;
+                    foreach ($temp_resp->results[0]->data as $data){
+                        $temp_flow_orders += (float)($data->values[0]);
+                    }
+                    $last_month_flow_orders += (float)$temp_flow_orders;
                 }
-                $last_month_flow_orders += (float)$temp_flow_orders;
             }
 
 
