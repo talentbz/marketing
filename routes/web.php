@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 /**
  * Copyright 2020 Google LLC
  *
@@ -16,12 +18,12 @@
  * limitations under the License.
  */
 
-Route::get(
-    '/',
-    function () {
-        return view('main');
-    }
-);
+// Route::get(
+//     '/',
+//     function () {
+//         return view('main');
+//     }
+// );
 Route::post(
     'pause-campaign',
     'GoogleAdsApiController@pauseCampaignAction'
@@ -66,3 +68,22 @@ Route::get(
     'get_tt',
     "TikController@getMTD"
 );
+Auth::routes();
+Route::middleware(['auth:web'])->group(function () {
+    Route::get('/', [App\Http\Controllers\HomeController::class, 'root'])->name('root');
+    Route::prefix('/shopify')->group(function () {
+        Route::get('/', [App\Http\Controllers\Admin\ShopifyController::class, 'index'])->name('admin.shopify.index');
+        Route::get('/create', [App\Http\Controllers\Admin\ShopifyController::class, 'create'])->name('admin.shopify.create');
+        Route::post('/store', [App\Http\Controllers\Admin\ShopifyController::class, 'store'])->name('admin.shopify.store');
+        Route::get('/edit/{id}', [App\Http\Controllers\Admin\ShopifyController::class, 'edit'])->name('admin.shopify.edit');
+        Route::post('/update/{id}', [App\Http\Controllers\Admin\ShopifyController::class, 'update'])->name('admin.shopify.update');
+    });
+});
+
+//Update User Details
+Route::post('/update-profile/{id}', [App\Http\Controllers\HomeController::class, 'updateProfile'])->name('updateProfile');
+Route::post('/update-password/{id}', [App\Http\Controllers\HomeController::class, 'updatePassword'])->name('updatePassword');
+
+// Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
+//Language Translation
+Route::get('index/{locale}', [App\Http\Controllers\HomeController::class, 'lang']);
