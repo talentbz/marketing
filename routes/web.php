@@ -39,11 +39,11 @@ Route::get(
     'GoogleAdsApiController@getCost'
 );
 
-Route::get(
-    'get_mtd',
-    'GoogleAdsApiController@getMTD'
-);
-
+// Route::get(
+//     'get_mtd',
+//     'GoogleAdsApiController@getMTD'
+// );
+Route::get('get_mtd', [App\Http\Controllers\GoogleAdsApiController::class, 'getMTD']);
 Route::get(
     'get_hyros',
     'HyrosApiController@getMTD'
@@ -78,6 +78,16 @@ Route::middleware(['auth:web'])->group(function () {
         Route::post('/update', [App\Http\Controllers\Admin\ShopifyController::class, 'update'])->name('admin.shopify.update');
         Route::get('/status', [App\Http\Controllers\Admin\ShopifyController::class, 'status'])->name('admin.shopify.status');
         Route::post('/delete', [App\Http\Controllers\Admin\ShopifyController::class, 'delete'])->name('admin.shopify.delete');
+    });
+    Route::prefix('/google')->group(function () {
+        Route::prefix('/hyros')->group(function () {
+            Route::get('/', [App\Http\Controllers\Admin\GoogleAdsController::class, 'index'])->name('admin.google-hyros.index');
+            Route::post('/store', [App\Http\Controllers\Admin\GoogleAdsController::class, 'store'])->name('admin.google-hyros.store');
+            Route::get('/edit', [App\Http\Controllers\Admin\GoogleAdsController::class, 'edit'])->name('admin.google-hyros.edit');
+            Route::post('/update', [App\Http\Controllers\Admin\GoogleAdsController::class, 'update'])->name('admin.google-hyros.update');
+            Route::get('/status', [App\Http\Controllers\Admin\GoogleAdsController::class, 'status'])->name('admin.google-hyros.status');
+            Route::post('/delete', [App\Http\Controllers\Admin\GoogleAdsController::class, 'delete'])->name('admin.google-hyros.delete');
+        });
     });
 });
 

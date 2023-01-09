@@ -1,13 +1,13 @@
 @extends('admin.layouts.master')
 
-@section('title') airline @endsection
+@section('title') Shopify @endsection
 @section('css')
 
 @endsection
 @section('content')
     @component('components.breadcrumb')
         @slot('li_1') list @endslot
-        @slot('title') Shipify Management @endslot
+        @slot('title') Shopify Management @endslot
     @endcomponent
     <div class="content-wrapper">
         <div class="row">

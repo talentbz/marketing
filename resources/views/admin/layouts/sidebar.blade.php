@@ -20,6 +20,15 @@
                         <span key="t-ecommerce">Shopify</span>
                     </a>
                 </li>
+                <li>
+                    <a href="javascript: void(0);" class="waves-effect">
+                        <i class="fab fa-google"></i>
+                        <span key="t-ecommerce">Google Ads</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="true">
+                        <li><a href="{{route('admin.google-hyros.index')}}">Hyros</a></li>
+                    </ul>
+                </li>
                 @endif
             </ul>
         </div>
