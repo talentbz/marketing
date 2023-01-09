@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
     // create new shopify
-    $('#add-modal').submit(function(e){
+    $('#datatable').on('submit', '#add-modal', function(e){
         e.preventDefault();
         e.stopPropagation();
         var formData = new FormData(this);
@@ -33,7 +33,7 @@ $(document).ready(function(){
     })
 
     // update the shopify data
-    $('.update_data').click(function(e){
+    $('#datatable').on('click', '.update_data', function(e){
         e.preventDefault();
         e.stopPropagation();
         id=$(this).data("id");
@@ -52,7 +52,7 @@ $(document).ready(function(){
             }
         })
     })
-    $('#update-modal').submit(function(e){
+    $('#datatable').on('submit', '#update-modal', function(e){
         e.preventDefault();
         e.stopPropagation();
         var formData = new FormData(this);
@@ -84,7 +84,7 @@ $(document).ready(function(){
     })
 
     // change status (switch box)
-    $('.price-status').change(function(){
+    $('#datatable').on('change', '.price-status',function(){
     	var status= $(this).prop('checked');
     	var id=$(this).val();
     	$.ajax({
