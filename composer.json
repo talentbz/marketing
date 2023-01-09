@@ -17,6 +17,7 @@
         "klaviyo/api": "^1.0",
         "laravel/framework": "^8.0",
         "laravel/tinker": "^2.0",
+        "laravel/ui": "*",
         "symfony/http-foundation": "^5.0",
         "vluzrmos/slack-api": "^0.5.5",
         "wrapi/slack": "*",
