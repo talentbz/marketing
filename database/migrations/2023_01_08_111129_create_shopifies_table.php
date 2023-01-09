@@ -18,6 +18,7 @@ class CreateShopifiesTable extends Migration
             $table->string('name');
             $table->string('url');
             $table->string('access_token');
+            $table->boolean('status')->default(1);
             $table->timestamps();
         });
     }
