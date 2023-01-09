@@ -12,4 +12,4 @@ npm-debug.log
 yarn-error.log
 google_ads_php.ini
 /config/services.php
-/app/Http/Controller/FbApiController.php
+/app/Http/Controller/Backend/*.php
