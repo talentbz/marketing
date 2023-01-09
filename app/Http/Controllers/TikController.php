@@ -391,10 +391,17 @@ class TikController extends Controller
         }
 
         foreach ($total_cost_array as $tca){
-            
-            $AT_client->table($tableName)
-                ->insert($tca)
-                ->execute();
+            // echo  "<pre>";
+            // var_dump($tca);
+            // echo  "</pre>";
+            try{
+                $AT_client->table($tableName)
+                    ->insert($tca)
+                    ->execute();
+            }
+            catch (Exception $err){
+                continue;
+            }
         }
         // tiktok_adgroup
     }
