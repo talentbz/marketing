@@ -73,10 +73,11 @@ Route::middleware(['auth:web'])->group(function () {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'root'])->name('root');
     Route::prefix('/shopify')->group(function () {
         Route::get('/', [App\Http\Controllers\Admin\ShopifyController::class, 'index'])->name('admin.shopify.index');
-        Route::get('/create', [App\Http\Controllers\Admin\ShopifyController::class, 'create'])->name('admin.shopify.create');
         Route::post('/store', [App\Http\Controllers\Admin\ShopifyController::class, 'store'])->name('admin.shopify.store');
-        Route::get('/edit/{id}', [App\Http\Controllers\Admin\ShopifyController::class, 'edit'])->name('admin.shopify.edit');
-        Route::post('/update/{id}', [App\Http\Controllers\Admin\ShopifyController::class, 'update'])->name('admin.shopify.update');
+        Route::get('/edit', [App\Http\Controllers\Admin\ShopifyController::class, 'edit'])->name('admin.shopify.edit');
+        Route::post('/update', [App\Http\Controllers\Admin\ShopifyController::class, 'update'])->name('admin.shopify.update');
+        Route::get('/status', [App\Http\Controllers\Admin\ShopifyController::class, 'status'])->name('admin.shopify.status');
+        Route::post('/delete', [App\Http\Controllers\Admin\ShopifyController::class, 'delete'])->name('admin.shopify.delete');
     });
 });
 

@@ -11,13 +11,13 @@
         <meta content="Themesbrand" name="author" />
         <!-- App favicon -->
         <link rel="shortcut icon" href="{{ URL::asset('assets/images/favicon.ico')}}">
-        @include('layouts.head-css')
+        @include('admin.layouts.head-css')
   </head>
 
     @yield('body')
     
     @yield('content')
 
-    @include('layouts.vendor-scripts')
+    @include('admin.layouts.vendor-scripts')
     </body>
 </html>
