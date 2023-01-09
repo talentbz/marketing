@@ -18,56 +18,11 @@ use Illuminate\Support\Facades\Route;
  * limitations under the License.
  */
 
-// Route::get(
-//     '/',
-//     function () {
-//         return view('main');
-//     }
-// );
-Route::post(
-    'pause-campaign',
-    'GoogleAdsApiController@pauseCampaignAction'
-);
-Route::match(
-    ['get', 'post'],
-    'show-report',
-    'GoogleAdsApiController@showReportAction'
-);
-
-Route::get(
-    'get_cost',
-    'GoogleAdsApiController@getCost'
-);
-
-// Route::get(
-//     'get_mtd',
-//     'GoogleAdsApiController@getMTD'
-// );
 Route::get('get_mtd', [App\Http\Controllers\GoogleAdsApiController::class, 'getMTD']);
-Route::get(
-    'get_hyros',
-    'HyrosApiController@getMTD'
-);
+Route::get('get_fb', [App\Http\Controllers\FbApiController::class, 'getMTD']);
+Route::get('get_klaviyo', [App\Http\Controllers\KlApiController::class, 'getMTD']);
+Route::get('get_tt', [App\Http\Controllers\TikController::class, 'getMTD']);
 
-Route::get(
-    'get_fb',
-    'FbApiController@getMTD'
-);
-
-Route::get(
-    'get_klaviyo',
-    'KlApiController@getMTD'
-);
-
-Route::get(
-    'get_tt_auth_code',
-    "TikController@getAuthCode"
-);
-
-Route::get(
-    'get_tt',
-    "TikController@getMTD"
-);
 Auth::routes();
 Route::middleware(['auth:web'])->group(function () {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'root'])->name('root');
