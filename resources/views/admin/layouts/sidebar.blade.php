@@ -16,7 +16,7 @@
                 </li>
                 <li>
                     <a href="{{route('admin.shopify.index')}}" class="waves-effect">
-                        <i class="bx bx-user-circle"></i>
+                        <i class="fab fa-shopify"></i>
                         <span key="t-ecommerce">Shopify</span>
                     </a>
                 </li>

@@ -95,13 +95,13 @@
                                             <button class="btn btn-primary waves-effect waves-light" type="submit">Log
                                                 In</button>
                                         </div>
-                                        <div class="mt-4 text-center">
+                                        <!-- <div class="mt-4 text-center">
                                             @if (Route::has('password.request'))
                                                 <a href="{{ route('password.request') }}" class="text-muted"><i
                                                         class="mdi mdi-lock me-1"></i> Forgot your password?</a>
                                             @endif
 
-                                        </div>
+                                        </div> -->
                                     </form>
                                 </div>
 
